@@ -3,11 +3,11 @@
   <title>churoc’s Blog</title>
   
   <subtitle>churoc</subtitle>
-  <link href="http://churoc.github.io/blog/atom.xml" rel="self"/>
+  <link href="http://churoc.github.io/atom.xml" rel="self"/>
   
-  <link href="http://churoc.github.io/blog/"/>
+  <link href="http://churoc.github.io/"/>
   <updated>2021-12-18T12:12:16.268Z</updated>
-  <id>http://churoc.github.io/blog/</id>
+  <id>http://churoc.github.io/</id>
   
   <author>
     <name>Jie Gu</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>机器学习学习笔记</title>
-    <link href="http://churoc.github.io/blog/2021/12/19/ji-qi-xue-xi-xue-xi-bi-ji/"/>
-    <id>http://churoc.github.io/blog/2021/12/19/ji-qi-xue-xi-xue-xi-bi-ji/</id>
+    <link href="http://churoc.github.io/2021/12/19/ji-qi-xue-xi-xue-xi-bi-ji/"/>
+    <id>http://churoc.github.io/2021/12/19/ji-qi-xue-xi-xue-xi-bi-ji/</id>
     <published>2021-12-19T12:46:05.289Z</published>
     <updated>2021-12-18T12:12:16.268Z</updated>
     
@@ -34,17 +34,17 @@
     
     
     
-    <category term="机器学习" scheme="http://churoc.github.io/blog/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    <category term="机器学习" scheme="http://churoc.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
     
-    <category term="机器学习" scheme="http://churoc.github.io/blog/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    <category term="机器学习" scheme="http://churoc.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
   <entry>
     <title>数据结构学习笔记</title>
-    <link href="http://churoc.github.io/blog/2021/12/18/shu-ju-jie-gou-xue-xi-bi-ji/"/>
-    <id>http://churoc.github.io/blog/2021/12/18/shu-ju-jie-gou-xue-xi-bi-ji/</id>
+    <link href="http://churoc.github.io/2021/12/18/shu-ju-jie-gou-xue-xi-bi-ji/"/>
+    <id>http://churoc.github.io/2021/12/18/shu-ju-jie-gou-xue-xi-bi-ji/</id>
     <published>2021-12-17T16:00:00.000Z</published>
     <updated>2021-12-18T12:06:26.281Z</updated>
     
@@ -59,17 +59,17 @@
     
     
     
-    <category term="算法" scheme="http://churoc.github.io/blog/categories/%E7%AE%97%E6%B3%95/"/>
+    <category term="算法" scheme="http://churoc.github.io/categories/%E7%AE%97%E6%B3%95/"/>
     
     
-    <category term="算法" scheme="http://churoc.github.io/blog/tags/%E7%AE%97%E6%B3%95/"/>
+    <category term="算法" scheme="http://churoc.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
     <title>过客</title>
-    <link href="http://churoc.github.io/blog/2021/12/17/markdown-mo-ban/"/>
-    <id>http://churoc.github.io/blog/2021/12/17/markdown-mo-ban/</id>
+    <link href="http://churoc.github.io/2021/12/17/markdown-mo-ban/"/>
+    <id>http://churoc.github.io/2021/12/17/markdown-mo-ban/</id>
     <published>2021-12-16T16:00:00.000Z</published>
     <updated>2021-12-18T12:13:36.873Z</updated>
     
@@ -81,8 +81,8 @@
   
   <entry>
     <title>过客</title>
-    <link href="http://churoc.github.io/blog/2021/12/17/guo-ke/"/>
-    <id>http://churoc.github.io/blog/2021/12/17/guo-ke/</id>
+    <link href="http://churoc.github.io/2021/12/17/guo-ke/"/>
+    <id>http://churoc.github.io/2021/12/17/guo-ke/</id>
     <published>2021-12-16T16:00:00.000Z</published>
     <updated>2021-12-18T12:22:37.020Z</updated>
     
@@ -98,10 +98,10 @@
     
     
     
-    <category term="随笔" scheme="http://churoc.github.io/blog/categories/%E9%9A%8F%E7%AC%94/"/>
+    <category term="随笔" scheme="http://churoc.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
     
     
-    <category term="随笔" scheme="http://churoc.github.io/blog/tags/%E9%9A%8F%E7%AC%94/"/>
+    <category term="随笔" scheme="http://churoc.github.io/tags/%E9%9A%8F%E7%AC%94/"/>
     
   </entry>
   
