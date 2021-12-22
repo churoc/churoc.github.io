@@ -232,6 +232,17 @@
   
   <li class="hide-on-med-and-down nav-item">
     
+    <a href="/galleries" class="waves-effect waves-light">
+      
+      <i class="fab fa-envira" style="zoom: 0.6;"></i>
+      
+      <span>Galleries</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
     <a href="/tags" class="waves-effect waves-light">
       
       <i class="fas fa-tags" style="zoom: 0.6;"></i>
@@ -338,6 +349,17 @@
 			    <i class="fa-fw fas fa-comment-dots"></i>
 			
 			Talk
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/galleries" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fab fa-envira"></i>
+			
+			Galleries
 		</a>
           
         </li>
@@ -575,21 +597,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-12-18
+                    2021-12-22
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.9k
+                    4.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    21 分
+                    23 分
                 </div>
                 
 
@@ -1645,7 +1667,128 @@ int main()
     printf("-&gt; %d\n", w);
     return 0;
 }<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="Topological-Sorting-BFS"><a href="#Topological-Sorting-BFS" class="headerlink" title="Topological_Sorting_BFS"></a>Topological_Sorting_BFS</h3><p>​        该算法又称为kahn算法。<br>​        如果顶点之间只是具有偏序关系，那么拓扑排序的结果肯定不唯一；如果顶点之间是全序关系，那么拓扑排序得到的序列唯一.</p>
+<pre class="line-numbers language-C" data-language="C"><code class="language-C">#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+#define OK 1
+#define ERROR 0
+#define Status int
+typedef int VertexType;
+typedef int EdgeType;
+#define MAXVES 100
 
+typedef struct EdgeNode                     //边表结点
+{
+    int adjvex;
+    int weight;
+    struct EdgeNode *next;
+}EdgeNode; 
+
+typedef struct VertexNode                    //顶点表结点
+{
+    VertexType data;
+    int in;                                  //顶点入度
+    EdgeNode *firstedge;                     //边表头指针
+}VertexNode;
+
+typedef struct                               //图结构
+{
+    VertexNode VertexList[MAXVES];           //顶点表结点数组
+    int numVertexes, numEdges;
+}AdjList;
+
+int *etv, *ltv;
+int *stack2;
+int top2;
+
+void CreateAdjList(AdjList *G)
+{
+    int i, j, k;
+    EdgeNode *e;
+    printf("输入顶点数和边数\n");
+    scanf("%d, %d", &amp;G-&gt;numVertexes, &amp;G-&gt;numEdges);
+    fflush(stdin);
+
+    printf("输入顶点信息和他的入度\n");
+    for(i=0; i&lt;G-&gt;numVertexes; i++)
+    {
+        scanf("%d",&amp;G-&gt;VertexList[i].data);      //输入顶点信息
+        scanf("%d",&amp;G-&gt;VertexList[i].in);
+        G-&gt;VertexList[i].firstedge=NULL;         //边表置空
+    }
+    fflush(stdin);
+    
+    printf("输入边的顶点序号\n");
+    for(k=0; k&lt;G-&gt;numEdges; k++)
+    {
+        scanf("%d,%d", &amp;i, &amp;j);
+
+        e=(EdgeNode*)malloc(sizeof(EdgeNode));   //生成边表结点
+        if(!e)
+            exit(0);
+        //头插法
+        e-&gt;adjvex=j;                             //边表结点的顶点数据输入
+        e-&gt;next=G-&gt;VertexList[i].firstedge;      //边表结点的指向边表头指针
+        G-&gt;VertexList[i].firstedge=e;            //修改边表头指针为e
+    }
+}  
+
+Status TopologicalSort(AdjList G)
+{
+    EdgeNode *e;
+    int i, k, gettop;
+    int top =0;
+    int count=0;
+    int *stack;
+
+    stack=(int *)malloc(G.numVertexes*sizeof(int));
+    for(i=0; i&lt;G.numVertexes; i++)
+    {
+        if(0==G.VertexList[i].in)
+        {
+            stack[++top]=i;
+        }
+    }
+
+	while( 0 != top )
+	{
+		/* 出栈 */
+		gettop = stack[top--];
+        printf("%d -&gt; ", G.VertexList[gettop].data);
+		
+		/* 记录拓扑排序输出顶点个数(用以判断是否存在环路) */
+		count++;
+
+		/* 取出一个入度为0的顶点后 以它为前驱的顶点入度-1 */
+		for( e=G.VertexList[gettop].firstedge; e; e=e-&gt;next )
+		{
+			k = e-&gt;adjvex;
+			/* 入度-1后若为0 则入栈 */
+			if( !(--G.VertexList[k].in) )
+			{
+				stack[++top] = k;
+			}
+		}
+	}
+
+	/* 如果count小于顶点数 说明存在环 */
+	if( count &lt; G.numVertexes)
+	{
+		return ERROR;
+	}
+	else
+	{
+		return OK;
+	}
+}
+
+int main()
+{
+	AdjList G;
+	CreateAdjList(&amp;G);
+	TopologicalSort(G);
+	return 0;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -2163,7 +2306,7 @@ int main()
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/12/19/ji-qi-xue-xi-xue-xi-bi-ji/">
+                <a href="/2021/12/21/ji-qi-xue-xi-xue-xi-bi-ji/">
                     <div class="card-image">
                         
                         <img src="/images/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%90%B4%E6%81%A9%E8%BE%BE.jpg" class="responsive-img" alt="机器学习学习笔记">
@@ -2179,7 +2322,7 @@ int main()
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-12-19
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-12-21
                         </span>
                         <span class="publish-author">
                             
@@ -2395,7 +2538,7 @@ int main()
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">4.4k</span>
+                        class="white-color">4.9k</span>
             
             
             
