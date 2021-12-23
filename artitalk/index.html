@@ -181,7 +181,7 @@
          <div></div>
      </div>
  </div><body>
-    <svg aria-hidden="true" style="position: absolute; overflow: hidden; width: 0; height: 0">
+    <!-- <svg aria-hidden="true" style="position: absolute; overflow: hidden; width: 0; height: 0">
         <symbol id="icon-sun" viewBox="0 0 1024 1024">
           <path d="M960 512l-128 128v192h-192l-128 128-128-128H192v-192l-128-128 128-128V192h192l128-128 128 128h192v192z" fill="#FFD878" p-id="8420"></path>
           <path d="M736 512a224 224 0 1 0-448 0 224 224 0 1 0 448 0z" fill="#FFE4A9" p-id="8421"></path>
@@ -216,7 +216,7 @@
       function switchNightModeTop() {
         $('body').hasClass('DarkMode') ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#changeMode-top').removeClass('fa-sun').addClass('fa-moon'), $('#modeicon').attr('xlink:href', '#icon-moon')) : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#changeMode-top').removeClass('fa-moon').addClass('fa-sun'), $('#modeicon').attr('xlink:href', '#icon-sun'))
       }
-    </script>
+    </script> -->
 
     <header class="navbar-fixed">
     <nav id="headNav" class="bg-color nav-transparent">
@@ -240,8 +240,51 @@
       
       <i class="fas fa-home" style="zoom: 0.6;"></i>
       
-      <span>Home</span>
+      <span>首页</span>
     </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-book" style="zoom: 0.6;"></i>
+      
+      <span>文章</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/tags">
+          
+          <i class="fas fa-tags" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>个签</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/categories">
+          
+          <i class="fas fa-bookmark" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>分类</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/archives">
+          
+          <i class="fas fa-archive" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>归档</span>
+        </a>
+      </li>
+      
+    </ul>
     
   </li>
   
@@ -251,7 +294,7 @@
       
       <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
       
-      <span>About me</span>
+      <span>关于</span>
     </a>
     
   </li>
@@ -262,7 +305,7 @@
       
       <i class="fas fa-comment-dots" style="zoom: 0.6;"></i>
       
-      <span>Talk</span>
+      <span>说说</span>
     </a>
     
   </li>
@@ -273,40 +316,7 @@
       
       <i class="fab fa-envira" style="zoom: 0.6;"></i>
       
-      <span>Galleries</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/tags" class="waves-effect waves-light">
-      
-      <i class="fas fa-tags" style="zoom: 0.6;"></i>
-      
-      <span>Tag</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/categories" class="waves-effect waves-light">
-      
-      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
-      
-      <span>Category</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/archives" class="waves-effect waves-light">
-      
-      <i class="fas fa-archive" style="zoom: 0.6;"></i>
-      
-      <span>Archive</span>
+      <span>相册</span>
     </a>
     
   </li>
@@ -317,7 +327,7 @@
       
       <i class="fas fa-comments" style="zoom: 0.6;"></i>
       
-      <span>Contact me</span>
+      <span>留言板</span>
     </a>
     
   </li>
@@ -328,7 +338,7 @@
       
       <i class="fas fa-map-marker" style="zoom: 0.6;"></i>
       
-      <span>Box</span>
+      <span>盒子</span>
     </a>
     
   </li>
@@ -363,8 +373,53 @@
 			
 			    <i class="fa-fw fas fa-home"></i>
 			
-			Home
+			首页
 		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-book"></i>
+			
+			文章
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/tags " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-tags" style="position: absolute;left:50px" ></i>
+			      
+		          <span>个签</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/categories " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-bookmark" style="position: absolute;left:50px" ></i>
+			      
+		          <span>分类</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/archives " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-archive" style="position: absolute;left:50px" ></i>
+			      
+		          <span>归档</span>
+                  </a>
+                </li>
+              
+            </ul>
           
         </li>
         
@@ -374,7 +429,7 @@
 			
 			    <i class="fa-fw fas fa-user-circle"></i>
 			
-			About me
+			关于
 		</a>
           
         </li>
@@ -385,7 +440,7 @@
 			
 			    <i class="fa-fw fas fa-comment-dots"></i>
 			
-			Talk
+			说说
 		</a>
           
         </li>
@@ -396,40 +451,7 @@
 			
 			    <i class="fa-fw fab fa-envira"></i>
 			
-			Galleries
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/tags" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-tags"></i>
-			
-			Tag
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/categories" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-bookmark"></i>
-			
-			Category
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/archives" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-archive"></i>
-			
-			Archive
+			相册
 		</a>
           
         </li>
@@ -440,7 +462,7 @@
 			
 			    <i class="fa-fw fas fa-comments"></i>
 			
-			Contact me
+			留言板
 		</a>
           
         </li>
@@ -451,7 +473,7 @@
 			
 			    <i class="fa-fw fas fa-map-marker"></i>
 			
-			Box
+			盒子
 		</a>
           
         </li>
