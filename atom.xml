@@ -6,7 +6,7 @@
   <link href="http://churoc.top/atom.xml" rel="self"/>
   
   <link href="http://churoc.top/"/>
-  <updated>2021-12-18T12:12:16.268Z</updated>
+  <updated>2021-12-23T14:28:54.777Z</updated>
   <id>http://churoc.top/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://churoc.top/2021/12/21/ji-qi-xue-xi-xue-xi-bi-ji/"/>
     <id>http://churoc.top/2021/12/21/ji-qi-xue-xi-xue-xi-bi-ji/</id>
     <published>2021-12-21T15:44:24.246Z</published>
-    <updated>2021-12-18T12:12:16.268Z</updated>
+    <updated>2021-12-23T14:28:54.777Z</updated>
     
     
       
@@ -39,6 +39,8 @@
     
     <category term="机器学习" scheme="http://churoc.top/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
+    <category term="matlab" scheme="http://churoc.top/tags/matlab/"/>
+    
   </entry>
   
   <entry>
@@ -46,7 +48,7 @@
     <link href="http://churoc.top/2021/12/18/shu-ju-jie-gou-xue-xi-bi-ji/"/>
     <id>http://churoc.top/2021/12/18/shu-ju-jie-gou-xue-xi-bi-ji/</id>
     <published>2021-12-17T16:00:00.000Z</published>
-    <updated>2021-12-22T04:40:37.410Z</updated>
+    <updated>2021-12-23T14:28:42.699Z</updated>
     
     
       
@@ -63,6 +65,8 @@
     
     
     <category term="算法" scheme="http://churoc.top/tags/%E7%AE%97%E6%B3%95/"/>
+    
+    <category term="C语言" scheme="http://churoc.top/tags/C%E8%AF%AD%E8%A8%80/"/>
     
   </entry>
   

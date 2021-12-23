@@ -1433,7 +1433,7 @@ thead {
 }
 
 .chip-container {
-    margin-top: -60px;
+    margin-top: 150px;
 }
 
 .chip-container .tag-title {
@@ -1838,10 +1838,14 @@ thead {
 
 .post-charts,
 .my-projects,
-.my-skills,
 .post-charts {
-    padding: 3.8rem 1.5rem 0.8rem 1.5rem;
+    padding: 1rem 1.5rem 0.8rem 1.5rem;
 }
+
+.my-skills {
+    padding: 4rem 1.5rem 0.8rem 1.5rem;
+}
+
 
 .post-charts,
 .title,
