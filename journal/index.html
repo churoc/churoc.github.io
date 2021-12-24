@@ -551,8 +551,9 @@
 </div>
 <style>
     .journal {
-        padding: 12px;
-        border: 1px dashed #e6e6e6;
+        padding: 0px 12px;
+        border: 1px  #e6e6e6;
+        /* border: 1px dashed #e6e6e6; */
         color: #969696;
         position: relative;
         display: inline-block;
@@ -560,7 +561,7 @@
         background: #fbfbfb50;
         border-radius: 10px;
         font-size: 16px;
-        margin: 12px auto;
+        margin: 0px auto;
     }
     * {
             margin: 0;
@@ -598,7 +599,7 @@
             width: 4px;
             background: #666666;
             position: absolute;
-            left: 50%;
+            left: 15%;
             margin-left: -2px;
             display: none;
         }
@@ -609,7 +610,7 @@
 
         .list {
             width: 100%;
-            height: 160px;
+            height: 100px;
             margin-top: 40px;
             position: relative;
             display: none;
@@ -621,7 +622,7 @@
             background: #666666;
             border-radius: 50%;
             position: absolute;
-            left: 50%;
+            left: 15%;
             border: 3px solid #ffffff;
             box-sizing: border-box;
             margin-left: -10px;
@@ -632,7 +633,7 @@
 
         .list_box {
             width: 50%;
-            height: 100%;
+            height: 70%;
             float: left;
             position: relative;
             /* background: red; */
@@ -644,54 +645,65 @@
             height: 4px;
             background: #666666;
             margin-top: 12px;
-            float: right;
+            position: absolute;
+            left: 30%;
             z-index: 1;
         }
 
         .list_nr {
-            width: 65%;
+            width: 120%;
             height: auto;
             padding: 15px;
-            background: #118DF0;
+            padding-top: 0px;
+            padding-bottom: 20px;
+            padding-left: 30px;
+            background: #7371BC;
             border-radius: 6px;
             color: #f6f7f8;
             float: left;
-            margin-top: -15px;
-            margin-left: 19%;
+            margin-top: 12px;
+            margin-left: 58%;
         }
 
         .nr_tit {
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 700;
-            margin: 10px 0;
+            margin: 0px 0;
             margin-top: 0px;
+            text-align: left;
+            text-indent: 2em;
+            white-space: pre-line;
         }
 
         .nr_nr {
-            line-height: 25px;
+            line-height: 10px;
             position: relative;
         }
 
         .date {
             position: absolute;
-            right: 12%;
-
+            left: 33%;
+            font-weight: 700;
             padding: 5px;
-            top: -32px;
-            color: #333;
+            top: -25px;
+            color: #7371BC;
             border-radius: 10px;
-            font-size: 12px;
+            font-size: 20px;
         }
 </style>    
 <main class="content">
-    <div class="container">
-    <div class="card">
+    <div class="container chip-container">
+    <div class="card" >
             <div class="card-content">
 
-                <div class="tag-title center-align">
+                <div class=" center-align">
                     <div class="journal">
-                        <div class="title center-align">“ 日志”</div>
-                        “ 用来记录每天的学习情况 ”                      
+                        <div class="card-content">
+                            <div class="tag-title center-align">
+                                <i class="fas fa-book"></i>&nbsp;&nbsp;日志
+                            </div>
+                            用来记录每天的学习情况
+                        </div>                                        
                     </div>
 
                     <div class="box">
@@ -708,33 +720,127 @@
                                                 <div class="list_nr">
                                                     <p class="date">2021-12-24</p>
                                                     <div class="nr_tit">
-                                                        <a href="">test</a>
+                                                        增加日志页面，学会了ejs的部分语法。
                                                     </div>
-                                                    <div class="nr_nr">
-                                                        test</div>
                                                 </div>
                                             </div>
                                         </div> 
                                     
-                                
-                            <!--一个模板-->
-                                <!-- <div class="list">
-                                    <div class="dian"></div>
-                                    <div class="list_box">
-                                        <div class="hx"></div>
-                                        <div class="list_nr">
-                                            <p class="date">2021-04-19 17:03:00</p>
-                                            <div class="nr_tit">
-                                                <a href=""># 添加统计数据</a>
+                                        
+                                        <div class="list">
+                                            <div class="dian"></div>
+                                            <div class="list_box">
+                                                <div class="hx"></div>
+                                                <div class="list_nr">
+                                                    <p class="date">2021-12-23</p>
+                                                    <div class="nr_tit">
+                                                        增加友链页面，优化关于页面，删除标签页面，加速图床。
+数据结构学习进度更新
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="nr_nr">
-                                                2021年头三个月百度统计数据到统计图页面</div>
-                                        </div>
-                                    </div>
-                                </div>  -->
-
-
-
+                                        </div> 
+                                    
+                                        
+                                        <div class="list">
+                                            <div class="dian"></div>
+                                            <div class="list_box">
+                                                <div class="hx"></div>
+                                                <div class="list_nr">
+                                                    <p class="date">2021-12-22</p>
+                                                    <div class="nr_tit">
+                                                        增加归档页面，实现多个相册展示。
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> 
+                                    
+                                        
+                                        <div class="list">
+                                            <div class="dian"></div>
+                                            <div class="list_box">
+                                                <div class="hx"></div>
+                                                <div class="list_nr">
+                                                    <p class="date">2021-12-21</p>
+                                                    <div class="nr_tit">
+                                                        增加相册页面，尝试移植fluid主题的归档页面。
+完成吴恩达教程作业ex2
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> 
+                                    
+                                        
+                                        <div class="list">
+                                            <div class="dian"></div>
+                                            <div class="list_box">
+                                                <div class="hx"></div>
+                                                <div class="list_nr">
+                                                    <p class="date">2021-12-20</p>
+                                                    <div class="nr_tit">
+                                                        增加说说页面，注册个人域名，开启评论功能。
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> 
+                                    
+                                        
+                                        <div class="list">
+                                            <div class="dian"></div>
+                                            <div class="list_box">
+                                                <div class="hx"></div>
+                                                <div class="list_nr">
+                                                    <p class="date">2021-12-18</p>
+                                                    <div class="nr_tit">
+                                                        学会typora使用。建立项目站点churoc.github.io/blog。
+完成吴恩达教程作业ex1
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> 
+                                    
+                                        
+                                        <div class="list">
+                                            <div class="dian"></div>
+                                            <div class="list_box">
+                                                <div class="hx"></div>
+                                                <div class="list_nr">
+                                                    <p class="date">2021-12-17</p>
+                                                    <div class="nr_tit">
+                                                        修改背景图片，各种小优化。
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> 
+                                    
+                                        
+                                        <div class="list">
+                                            <div class="dian"></div>
+                                            <div class="list_box">
+                                                <div class="hx"></div>
+                                                <div class="list_nr">
+                                                    <p class="date">2021-12-16</p>
+                                                    <div class="nr_tit">
+                                                        学习markdown语法，初始化三篇blog。优化菜单栏。
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> 
+                                    
+                                        
+                                        <div class="list">
+                                            <div class="dian"></div>
+                                            <div class="list_box">
+                                                <div class="hx"></div>
+                                                <div class="list_nr">
+                                                    <p class="date">2021-12-15</p>
+                                                    <div class="nr_tit">
+                                                        本站初步建立。
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> 
+                                    
                     <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
                     <script src="../src/tiao_c.js"></script>
                     <script>
@@ -746,7 +852,7 @@
                             let hx = $(".hx");
                             let list_nr = $(".list_nr");
                             let date = $(".date");
-                            let arr_color = ['#118DF0', '#8bc24c', '#FF5F5F', '#515bd4', '#F7B32D'];
+                            let arr_color = ['#7371BC'];
                             let flag = 0;
                             let wy = $("body").width();
 
@@ -773,27 +879,27 @@
                                         flag += 1;
                                     }
 
-                                    if (index % 2 != 0) {
-                                        let a = $(list_box[index]);
-                                        let b = $(hx[index]);
-                                        let c = $(list_nr[index]);
-                                        let d = $(date[index]);
-                                        a.css({
-                                            "float": "right"
-                                        });
-                                        b.css({
-                                            "float": "left"
-                                        })
-                                        c.css({
-                                            "float": "right",
-                                            "margin-right": "19%"
-                                        })
-                                        d.css({
-                                            "right": 'unset',
-                                            "left": "12%"
-                                        })
+                                    // if (index % 2 != 0) {
+                                    //     let a = $(list_box[index]);
+                                    //     let b = $(hx[index]);
+                                    //     let c = $(list_nr[index]);
+                                    //     let d = $(date[index]);
+                                    //     a.css({
+                                    //         "float": "right"
+                                    //     });
+                                    //     b.css({
+                                    //         "float": "left"
+                                    //     })
+                                    //     c.css({
+                                    //         "float": "right",
+                                    //         "margin-right": "19%"
+                                    //     })
+                                    //     d.css({
+                                    //         "right": 'unset',
+                                    //         "left": "12%"
+                                    //     })
 
-                                    }
+                                    // }
                                 }
                                 $(".list").slideDown(800);
                             }
