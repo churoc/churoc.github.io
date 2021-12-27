@@ -649,8 +649,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
-                                算法
+                            <a href="/categories/%E7%AC%94%E8%AE%B0/" class="post-category">
+                                笔记
                             </a>
                         
                     </div>
@@ -669,21 +669,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-12-24
+                    2021-12-27
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    5.3k
+                    5.8k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    28 分
+                    31 分
                 </div>
                 
 
@@ -2096,6 +2096,132 @@ int Fibonacci_Search(int *a, int n, int key)
     }
     return 0;
 }<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="Bianry-Sort-Tree"><a href="#Bianry-Sort-Tree" class="headerlink" title="Bianry_Sort_Tree"></a>Bianry_Sort_Tree</h3><pre class="line-numbers language-C" data-language="C"><code class="language-C">#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+#define Status int
+#define FALSE 0
+#define TRUE 1
+typedef int ElemType;
+typedef struct BITNode
+{
+    ElemType data;
+    struct BITNode *LChild, *RChild;
+}BITNode, *BiTree;
+
+//创建一个二叉树，约定前序遍历的方式输入
+void CreateBiTree(BiTree *T)
+{
+    ElemType c;
+    scanf("%d", &amp;c);
+
+    if(' '==c)
+    {
+        *T=NULL;
+    }
+    else
+    {
+        *T=(BITNode *)malloc(sizeof(BITNode));
+        (*T)-&gt;data=c;
+        CreateBiTree(&amp;(*T)-&gt;LChild);
+        CreateBiTree(&amp;(*T)-&gt;RChild);
+    }
+}
+
+//一些理解：
+//树结构本身是一级结点指针，用BiTree找到根结点，用T-&gt;Child找到孩子结点，
+//所以在函数传入值中，仅是调用的话，用一级结点指针，涉及创建，改动值的时候用二级结构指针，如*p。
+//p指针存放查找路径上访问的最后一个结点
+//f指向T的双亲。
+Status SearchBST(BiTree T, int key, BiTree f, BiTree *p)
+{
+    if(!T)
+    {
+        *p=f;
+        return FALSE;
+    }
+    else if(key==T-&gt;data)
+    {
+        *p=T;
+        return TRUE;
+    }
+    else if (key&lt;T-&gt;data)
+        return SearchBST(T-&gt;LChild, key, T, p);
+    else 
+        return SearchBST(T-&gt;RChild, key, T, p);
+}
+
+Status Delete(BiTree *p)
+{
+    BiTree q, s;
+    if((*p)-&gt;RChild==NULL)
+    {
+        q=*p;
+        *p=(*p)-&gt;LChild;
+        free(q);
+    }
+    else if((*p)-&gt;LChild==NULL)
+    {
+        q=*p;
+        *p=(*p)-&gt;RChild;
+        free(q);
+    }
+    else
+    {
+        q=*p;
+        s=(*p)-&gt;LChild;
+        while(s-&gt;RChild)
+        {
+            q=s;
+            s=s-&gt;RChild;
+        }
+        (*p)-&gt;data=s-&gt;data;
+        if(q!=*p)
+            q-&gt;RChild=s-&gt;LChild;   
+        //如果q不等于p，上面while起码遍历一次，删掉s，q的右孩子没了，把s原先左孩子接到q右侧。
+        else
+            q-&gt;LChild=s-&gt;LChild;   
+        //如果q等于p，while没遍历，删掉s，q的左孩子没了，把s原先左孩子接到q左侧。
+        free(s);
+    }
+    return TRUE;
+}
+
+Status InsertBST(BiTree *T, int key)
+{
+    BiTree p, s;
+    if(!SearchBST(*T, key, NULL, &amp;p))
+    {
+        s=(BiTree)malloc(sizeof(BITNode));
+        s-&gt;data=key;
+        s-&gt;LChild=s-&gt;RChild=NULL;
+        if(!p)
+            *T=s;
+        else if(key&lt;p-&gt;data)
+            p-&gt;LChild=s;
+        else    
+            p-&gt;RChild=s;
+        return TRUE;
+    }
+    else
+        return FALSE;
+}
+
+Status DeleteBST(BiTree *T, int key)
+{
+    if(!*T)
+        return FALSE;
+    else
+    {
+        if(key==(*T)-&gt;data)
+            return Delete(T);
+        else if(key&lt;(*T)-&gt;data)
+            return DeleteBST(&amp;(*T)-&gt;LChild, key);
+        else
+            return DeleteBST(&amp;(*T)-&gt;RChild, key);  
+    }
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
                 
             </div>
             <hr/>
@@ -2639,8 +2765,8 @@ int Fibonacci_Search(int *a, int n, int key)
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="post-category">
-                                    机器学习
+                            <a href="/categories/%E7%AC%94%E8%AE%B0/" class="post-category">
+                                    笔记
                                 </a>
                             
                             
@@ -2853,7 +2979,7 @@ int Fibonacci_Search(int *a, int n, int key)
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">7.6k</span>
+                        class="white-color">8.6k</span>
             
             
             
