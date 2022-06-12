@@ -36,138 +36,7 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<style type="text/css" lang="css">
-    #loading-container{
-        position: fixed;
-        top: 0;
-        left: 0;
-        min-height: 100vh;
-        width: 100vw;
-        z-index: 9999;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        background: linear-gradient(60deg, rgba(255, 165, 150, 0.5) 5%, rgba(0, 228, 255, 0.35)) 0% 0% / cover, url("https://ae01.alicdn.com/kf/H18a4b998752a4ae68b8e85d432a5aef0l.png"), url("https://ae01.alicdn.com/kf/H21b5f6b8496141a1979a33666e1074d9x.jpg") 0px 0px;
-        text-align: center;
-        /* loader页面消失采用渐隐的方式*/
-        -webkit-transition: opacity 1s ease;
-        -moz-transition: opacity 1s ease;
-        -o-transition: opacity 1s ease;
-        transition: opacity 1s ease;
-    }
-    .loading-image{
-        width: 120px;
-        height: 50px;
-        transform: translate(-50%);
-    }
-
-    .loading-image div:nth-child(2) {
-        -webkit-animation: pacman-balls 1s linear 0s infinite;
-        animation: pacman-balls 1s linear 0s infinite
-    }
-
-    .loading-image div:nth-child(3) {
-        -webkit-animation: pacman-balls 1s linear .33s infinite;
-        animation: pacman-balls 1s linear .33s infinite
-    }
-
-    .loading-image div:nth-child(4) {
-        -webkit-animation: pacman-balls 1s linear .66s infinite;
-        animation: pacman-balls 1s linear .66s infinite
-    }
-
-    .loading-image div:nth-child(5) {
-        -webkit-animation: pacman-balls 1s linear .99s infinite;
-        animation: pacman-balls 1s linear .99s infinite
-    }
-
-   .loading-image div:first-of-type {
-        width: 0;
-        height: 0;
-        border: 25px solid #49b1f5;
-        border-right-color: transparent;
-        border-radius: 25px;
-        -webkit-animation: rotate_pacman_half_up .5s 0s infinite;
-        animation: rotate_pacman_half_up .5s 0s infinite;
-    }
-    .loading-image div:nth-child(2) {
-        width: 0;
-        height: 0;
-        border: 25px solid #49b1f5;
-        border-right-color: transparent;
-        border-radius: 25px;
-        -webkit-animation: rotate_pacman_half_down .5s 0s infinite;
-        animation: rotate_pacman_half_down .5s 0s infinite;
-        margin-top: -50px;
-    }
-    @-webkit-keyframes rotate_pacman_half_up {0% {transform: rotate(270deg)}50% {transform: rotate(1turn)}to {transform: rotate(270deg)}}
-
-    @keyframes rotate_pacman_half_up {0% {transform: rotate(270deg)}50% {transform: rotate(1turn)}to {transform: rotate(270deg)}}
-
-    @-webkit-keyframes rotate_pacman_half_down {0% {transform: rotate(90deg)}50% {transform: rotate(0deg)}to {transform: rotate(90deg)}}
-
-    @keyframes rotate_pacman_half_down {0% {transform: rotate(90deg)}50% {transform: rotate(0deg)}to {transform: rotate(90deg)}}
-
-    @-webkit-keyframes pacman-balls {75% {opacity: .7}to {transform: translate(-100px, -6.25px)}}
-
-    @keyframes pacman-balls {75% {opacity: .7}to {transform: translate(-100px, -6.25px)}}
-
-
-    .loading-image div:nth-child(3),
-    .loading-image div:nth-child(4),
-    .loading-image div:nth-child(5),
-    .loading-image div:nth-child(6){
-        background-color: #49b1f5;
-        width: 15px;
-        height: 15px;
-        border-radius: 100%;
-        margin: 2px;
-        width: 10px;
-        height: 10px;
-        position: absolute;
-        transform: translateY(-6.25px);
-        top: 25px;
-        left: 100px;
-    }
-    .loading-text{
-        margin-bottom: 20vh;
-        text-align: center;
-        color: #000000;
-        font-size: 2rem;
-        font-style: italic;
-        box-sizing: border-box;
-        padding: 0 10px;
-        text-shadow: 0 2px 10px rgba(0,0,0,0.2);
-    }
-    @media only screen and (max-width: 500px) {
-         .loading-text{
-            font-size: 1.5rem;
-         }
-    }
-    .fadeout {
-        opacity: 0;
-        filter: alpha(opacity=0);
-    }
-    /* logo出现动画 */
-    @-webkit-keyframes fadeInDown{0%{opacity:0;-webkit-transform:translate3d(0,-100%,0);transform:translate3d(0,-100%,0)}100%{opacity:1;-webkit-transform:none;transform:none}}
-    @keyframes fadeInDown{0%{opacity:0;-webkit-transform:translate3d(0,-100%,0);}}
- </style>
- <script>
-(function () {
-    const loaded = function(){
-       setTimeout(function(){
-            const loader = document.getElementById("loading-container");
-            loader.className="fadeout" ;//使用渐隐的方法淡出loading page
-            // document.getElementById("body-wrap").style.display="flex";
-            setTimeout(function(){
-                loader.style.display="none";
-            },1000); 
-        },1000);//强制显示loading page 1s  
-    };
-    loaded();
-})()
- </script><meta name="generator" content="Hexo 5.4.0">
+<meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="churoc’s Blog" type="application/atom+xml">
 </head>
@@ -175,17 +44,7 @@
 
 
 
-
- <div id="loading-container">
-     <p class="loading-text">资源加载缓慢，请耐心等待。。。</p> 
-     <div class="loading-image">
-         <div></div>
-         <div></div>
-         <div></div>
-         <div></div> 
-         <div></div>
-     </div>
- </div><body>
+<body>
     <!-- <svg aria-hidden="true" style="position: absolute; overflow: hidden; width: 0; height: 0">
         <symbol id="icon-sun" viewBox="0 0 1024 1024">
           <path d="M960 512l-128 128v192h-192l-128 128-128-128H192v-192l-128-128 128-128V192h192l128-128 128 128h192v192z" fill="#FFD878" p-id="8420"></path>
@@ -285,17 +144,6 @@
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/categories" class="waves-effect waves-light">
-      
-      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
-      
-      <span>分类</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
     <a href="/artitalk" class="waves-effect waves-light">
       
       <i class="fas fa-comment-dots" style="zoom: 0.6;"></i>
@@ -323,28 +171,6 @@
       <i class="fas fa-comments" style="zoom: 0.6;"></i>
       
       <span>留言板</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/friends" class="waves-effect waves-light">
-      
-      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
-      
-      <span>友链</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/box" class="waves-effect waves-light">
-      
-      <i class="fas fa-map-marker" style="zoom: 0.6;"></i>
-      
-      <span>盒子</span>
     </a>
     
   </li>
@@ -419,17 +245,6 @@
         
         <li class="m-nav-item">
 	  
-		<a href="/categories" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-bookmark"></i>
-			
-			分类
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
 		<a href="/artitalk" class="waves-effect waves-light">
 			
 			    <i class="fa-fw fas fa-comment-dots"></i>
@@ -457,28 +272,6 @@
 			    <i class="fa-fw fas fa-comments"></i>
 			
 			留言板
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/friends" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-address-book"></i>
-			
-			友链
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/box" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-map-marker"></i>
-			
-			盒子
 		</a>
           
         </li>
@@ -571,7 +364,7 @@
                     <div class="post-statis col l4 hide-on-med-and-down" data-aos="zoom-in-right">
                         
 <div class="statis">
-    <span class="count"><a href="/">4</a></span>
+    <span class="count"><a href="/">5</a></span>
     <span class="name">文章</span>
 </div>
 
@@ -601,7 +394,7 @@
                                 <div class="post-statis hide-on-large-only" data-aos="zoom-in-right">
                                     
 <div class="statis">
-    <span class="count"><a href="/">4</a></span>
+    <span class="count"><a href="/">5</a></span>
     <span class="name">文章</span>
 </div>
 
@@ -767,20 +560,11 @@
             <div class="tag-chips">
                 
                 
-                <a href="/tags/%E7%AE%97%E6%B3%95/" title="算法: 1">
+                <a href="/tags/%E9%9A%8F%E7%AC%94/" title="随笔: 3">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="算法" style="background-color: #F9EBEA;">算法
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/C%E8%AF%AD%E8%A8%80/" title="C语言: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="C语言" style="background-color: #F5EEF8;">C语言
-                        <span class="tag-length">1</span>
+                            data-tagname="随笔" style="background-color: #F9EBEA;">随笔
+                        <span class="tag-length">3</span>
                     </span>
                 </a>
                 
@@ -788,7 +572,7 @@
                 <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" title="机器学习: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="机器学习" style="background-color: #D5F5E3;">机器学习
+                            data-tagname="机器学习" style="background-color: #F5EEF8;">机器学习
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -797,17 +581,26 @@
                 <a href="/tags/%E7%AC%94%E8%AE%B0/" title="笔记: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="笔记" style="background-color: #E8F8F5;">笔记
+                            data-tagname="笔记" style="background-color: #D5F5E3;">笔记
                         <span class="tag-length">1</span>
                     </span>
                 </a>
                 
                 
-                <a href="/tags/%E9%9A%8F%E7%AC%94/" title="随笔: 2">
+                <a href="/tags/%E7%AE%97%E6%B3%95/" title="算法: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="随笔" style="background-color: #FEF9E7;">随笔
-                        <span class="tag-length">2</span>
+                            data-tagname="算法" style="background-color: #E8F8F5;">算法
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/C%E8%AF%AD%E8%A8%80/" title="C语言: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="C语言" style="background-color: #FEF9E7;">C语言
+                        <span class="tag-length">1</span>
                     </span>
                 </a>
                 
@@ -834,7 +627,7 @@
 <script type="text/javascript">
     
 
-    $('#tag-wordcloud').jQCloud([{"text":"算法","weight":1,"link":"/tags/算法/"},{"text":"C语言","weight":1,"link":"/tags/C语言/"},{"text":"机器学习","weight":1,"link":"/tags/机器学习/"},{"text":"笔记","weight":1,"link":"/tags/笔记/"},{"text":"随笔","weight":2,"link":"/tags/随笔/"}], {
+    $('#tag-wordcloud').jQCloud([{"text":"随笔","weight":3,"link":"/tags/随笔/"},{"text":"机器学习","weight":1,"link":"/tags/机器学习/"},{"text":"笔记","weight":1,"link":"/tags/笔记/"},{"text":"算法","weight":1,"link":"/tags/算法/"},{"text":"C语言","weight":1,"link":"/tags/C语言/"}], {
         autoResize: true
     });
 </script>
@@ -892,7 +685,7 @@
         },
         xAxis: {
             type: 'category',
-            data: ["2020-12","2021-01","2021-02","2021-03","2021-04","2021-05","2021-06","2021-07","2021-08","2021-09","2021-10","2021-11","2021-12"]
+            data: ["2021-06","2021-07","2021-08","2021-09","2021-10","2021-11","2021-12","2022-01","2022-02","2022-03","2022-04","2022-05","2022-06"]
         },
         yAxis: {
             type: 'value',
@@ -902,7 +695,7 @@
                 name: '文章篇数',
                 type: 'line',
                 color: ['#6772e5'],
-                data: [0,0,0,0,0,0,0,0,0,0,0,0,4],
+                data: [0,0,0,0,0,0,4,0,0,0,0,1,0],
                 markPoint: {
                     symbolSize: 45,
                     color: ['#fa755a','#3ecf8e','#82d3f4'],
@@ -944,7 +737,7 @@
                 type: 'pie',
                 radius: '50%',
                 color: ['#6772e5', '#ff9e0f', '#fa755a', '#3ecf8e', '#82d3f4', '#ab47bc', '#525f7f', '#f51c47', '#26A69A'],
-                data: [{"name":"随笔","value":2},{"name":"笔记","value":2}],
+                data: [{"name":"随笔","value":3},{"name":"笔记","value":2}],
                 itemStyle: {
                     emphasis: {
                         shadowBlur: 10,
@@ -968,7 +761,7 @@
         xAxis: [
             {
                 type: 'category',
-                data: ["随笔","算法","C语言","机器学习","笔记"]
+                data: ["随笔","机器学习","笔记","算法","C语言"]
             }
         ],
         yAxis: [
@@ -981,7 +774,7 @@
                 type: 'bar',
                 color: ['#82d3f4'],
                 barWidth : 18,
-                data: [2,1,1,1,1],
+                data: [3,1,1,1,1],
                 markPoint: {
                     symbolSize: 45,
                     data: [{
@@ -1122,14 +915,8 @@
         <div class="tag-chips center-align">
             
             
-            <a href="/tags/%E7%AE%97%E6%B3%95/">
-                <span class="chip center-align waves-effect waves-light chip-default">算法</span>
-            </a>
-            
-            
-            
-            <a href="/tags/C%E8%AF%AD%E8%A8%80/">
-                <span class="chip center-align waves-effect waves-light chip-default">C语言</span>
+            <a href="/tags/%E9%9A%8F%E7%AC%94/">
+                <span class="chip center-align waves-effect waves-light chip-default">随笔</span>
             </a>
             
             
@@ -1146,8 +933,14 @@
             
             
             
-            <a href="/tags/%E9%9A%8F%E7%AC%94/">
-                <span class="chip center-align waves-effect waves-light chip-default">随笔</span>
+            <a href="/tags/%E7%AE%97%E6%B3%95/">
+                <span class="chip center-align waves-effect waves-light chip-default">算法</span>
+            </a>
+            
+            
+            
+            <a href="/tags/C%E8%AF%AD%E8%A8%80/">
+                <span class="chip center-align waves-effect waves-light chip-default">C语言</span>
             </a>
             
             
@@ -1183,20 +976,11 @@
             <div class="tag-chips">
                 
                 
-                <a href="/tags/%E7%AE%97%E6%B3%95/" title="算法: 1">
+                <a href="/tags/%E9%9A%8F%E7%AC%94/" title="随笔: 3">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="算法" style="background-color: #F9EBEA;">算法
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/C%E8%AF%AD%E8%A8%80/" title="C语言: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="C语言" style="background-color: #F5EEF8;">C语言
-                        <span class="tag-length">1</span>
+                            data-tagname="随笔" style="background-color: #F9EBEA;">随笔
+                        <span class="tag-length">3</span>
                     </span>
                 </a>
                 
@@ -1204,7 +988,7 @@
                 <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" title="机器学习: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="机器学习" style="background-color: #D5F5E3;">机器学习
+                            data-tagname="机器学习" style="background-color: #F5EEF8;">机器学习
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -1213,17 +997,26 @@
                 <a href="/tags/%E7%AC%94%E8%AE%B0/" title="笔记: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="笔记" style="background-color: #E8F8F5;">笔记
+                            data-tagname="笔记" style="background-color: #D5F5E3;">笔记
                         <span class="tag-length">1</span>
                     </span>
                 </a>
                 
                 
-                <a href="/tags/%E9%9A%8F%E7%AC%94/" title="随笔: 2">
+                <a href="/tags/%E7%AE%97%E6%B3%95/" title="算法: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="随笔" style="background-color: #FEF9E7;">随笔
-                        <span class="tag-length">2</span>
+                            data-tagname="算法" style="background-color: #E8F8F5;">算法
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/C%E8%AF%AD%E8%A8%80/" title="C语言: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="C语言" style="background-color: #FEF9E7;">C语言
+                        <span class="tag-length">1</span>
                     </span>
                 </a>
                 
@@ -1247,7 +1040,7 @@
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2021</span>
+                <span id="year">2021-2022</span>
             
             <a href="/about" target="_blank">Jie Gu</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
@@ -1255,7 +1048,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">8.6k</span>
+                        class="white-color">9.5k</span>
             
             
             
