@@ -1,0 +1,1585 @@
+<!DOCTYPE HTML><html lang="zh-CN"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous"><script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous" onload="renderMathInElement(document.body)"></script><head><meta charset="utf-8"><meta name="keywords" content="数据结构学习笔记, churoc’s Blog"><meta name="description" content="初学数据结构，记录一下代码实现。"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"><meta name="renderer" content="webkit|ie-stand|ie-comp"><meta name="mobile-web-app-capable" content="yes"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="referrer" content="no-referrer-when-downgrade"><title>数据结构学习笔记 | churoc’s Blog</title><link rel="icon" type="image/png" href="/favicon.png"><link rel="stylesheet" href="/libs/awesome/css/all.min.css"><link rel="stylesheet" href="/libs/materialize/materialize.min.css"><link rel="stylesheet" href="/libs/aos/aos.css"><link rel="stylesheet" href="/libs/animate/animate.min.css"><link rel="stylesheet" href="/libs/lightGallery/css/lightgallery.min.css"><link rel="stylesheet" href="/css/matery.css"><link rel="stylesheet" href="/css/my.css"><link rel="stylesheet" href="/libs/artitalk/artitalk.min.css"><script src="/libs/jquery/jquery-3.6.0.min.js"></script><meta name="generator" content="Hexo 6.2.0"><style>.github-emoji{position:relative;display:inline-block;width:1.2em;min-height:1.2em;overflow:hidden;vertical-align:top;color:transparent}.github-emoji>span{position:relative;z-index:10}.github-emoji .fancybox,.github-emoji img{margin:0!important;padding:0!important;border:none!important;outline:0!important;text-decoration:none!important;user-select:none!important;cursor:auto!important}.github-emoji img{height:1.2em!important;width:1.2em!important;position:absolute!important;left:50%!important;top:50%!important;transform:translate(-50%,-50%)!important;user-select:none!important;cursor:auto!important}.github-emoji-fallback{color:inherit}.github-emoji-fallback img{opacity:0!important}</style><link rel="alternate" href="/atom.xml" title="churoc’s Blog" type="application/atom+xml"></head><style>body{background-image:url(/medias/background/城市流星.png);background-repeat:no-repeat;background-size:100% 100%;background-attachment:fixed}</style><body><header class="navbar-fixed"><nav id="headNav" class="bg-color nav-transparent"><div id="navContainer" class="nav-wrapper container"><div class="brand-logo"><a href="/" class="waves-effect waves-light"><img src="/medias/logo.png" class="logo-img" alt="LOGO"> <span class="logo-span">churoc’s Blog</span></a></div><a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a><ul class="right nav-menu"><li class="hide-on-med-and-down nav-item"><a href="/" class="waves-effect waves-light"><i class="fas fa-home" style="zoom:.6"></i> <span>首页</span></a></li><li class="hide-on-med-and-down nav-item"><a href="/about" class="waves-effect waves-light"><i class="fas fa-user-circle" style="zoom:.6"></i> <span>关于</span></a></li><li class="hide-on-med-and-down nav-item"><a href="/journal" class="waves-effect waves-light"><i class="fas fa-book" style="zoom:.6"></i> <span>日志</span></a></li><li class="hide-on-med-and-down nav-item"><a href="/archives" class="waves-effect waves-light"><i class="fas fa-archive" style="zoom:.6"></i> <span>归档</span></a></li><li class="hide-on-med-and-down nav-item"><a href="/categories" class="waves-effect waves-light"><i class="fas fa-bookmark" style="zoom:.6"></i> <span>分类</span></a></li><li class="hide-on-med-and-down nav-item"><a href="/contact" class="waves-effect waves-light"><i class="fas fa-comments" style="zoom:.6"></i> <span>留言板</span></a></li><li class="hide-on-med-and-down nav-item"><a href="/friends" class="waves-effect waves-light"><i class="fas fa-address-book" style="zoom:.6"></i> <span>友链</span></a></li><li class="hide-on-med-and-down nav-item"><a href="" class="waves-effect waves-light"><span>维护中</span><i class="fas fa-chevron-down" aria-hidden="true" style="zoom:.6"></i></a><ul class="sub-nav menus_item_child"><li><a href="/box"><i class="fas fa-map-marker" style="margin-top:-20px;zoom:.6"></i> <span>盒子</span></a></li><li><a href="/artitalk"><i class="fas fa-comment-dots" style="margin-top:-20px;zoom:.6"></i> <span>说说</span></a></li><li><a href="/galleries"><i class="fab fa-envira" style="margin-top:-20px;zoom:.6"></i> <span>相册</span></a></li></ul></li><li><a href="#searchModal" class="modal-trigger waves-effect waves-light"><i id="searchIcon" class="fas fa-search" title="搜索" style="zoom:.85"></i></a></li></ul><div id="mobile-nav" class="side-nav sidenav"><div class="mobile-head bg-color"><img src="/medias/logo.png" class="logo-img circle responsive-img"><div class="logo-name">churoc’s Blog</div><div class="logo-desc">It’s a blog used to record my life and study.</div></div><ul class="menu-list mobile-menu-list"><li class="m-nav-item"><a href="/" class="waves-effect waves-light"><i class="fa-fw fas fa-home"></i> 首页</a></li><li class="m-nav-item"><a href="/about" class="waves-effect waves-light"><i class="fa-fw fas fa-user-circle"></i> 关于</a></li><li class="m-nav-item"><a href="/journal" class="waves-effect waves-light"><i class="fa-fw fas fa-book"></i> 日志</a></li><li class="m-nav-item"><a href="/archives" class="waves-effect waves-light"><i class="fa-fw fas fa-archive"></i> 归档</a></li><li class="m-nav-item"><a href="/categories" class="waves-effect waves-light"><i class="fa-fw fas fa-bookmark"></i> 分类</a></li><li class="m-nav-item"><a href="/contact" class="waves-effect waves-light"><i class="fa-fw fas fa-comments"></i> 留言板</a></li><li class="m-nav-item"><a href="/friends" class="waves-effect waves-light"><i class="fa-fw fas fa-address-book"></i> 友链</a></li><li class="m-nav-item"><a href="javascript:;"><i class="fas fa-fw fa-link"></i> 维护中<span class="m-icon"><i class="fas fa-chevron-right"></i></span></a><ul><li><a href="/box" style="margin-left:75px"><i class="fa fas fa-map-marker" style="position:absolute;left:50px"></i> <span>盒子</span></a></li><li><a href="/artitalk" style="margin-left:75px"><i class="fa fas fa-comment-dots" style="position:absolute;left:50px"></i> <span>说说</span></a></li><li><a href="/galleries" style="margin-left:75px"><i class="fa fab fa-envira" style="position:absolute;left:50px"></i> <span>相册</span></a></li></ul></li></ul></div></div></nav></header><div class="bg-cover pd-header post-cover" style="background-image:url(/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.jpg)"><div class="container" style="right:0;left:0"><div class="row"><div class="col s12 m12 l12"><div class="brand"><h1 class="description center-align post-title">数据结构学习笔记</h1></div></div></div></div></div><main class="post-container content"><link rel="stylesheet" href="/libs/tocbot/tocbot.css"><style>#articleContent h1::before,#articleContent h2::before,#articleContent h3::before,#articleContent h4::before,#articleContent h5::before,#articleContent h6::before{display:block;content:" ";height:100px;margin-top:-100px;visibility:hidden}#articleContent :focus{outline:0}.toc-fixed{position:fixed;top:64px}.toc-widget{width:345px;padding-left:20px;background-color:rgb(255,255,255,.7);border-radius:10px;box-shadow:0 10px 35px 2px rgba(0,0,0,.15),0 5px 15px rgba(0,0,0,.07),0 2px 5px -5px rgba(0,0,0,.1)!important}.toc-widget .toc-title{padding:35px 0 15px 17px;font-size:1.5rem;font-weight:700;line-height:1.5rem}.toc-widget ol{padding:0;list-style:none}#toc-content{height:calc(100vh - 200px);overflow:auto}#toc-content ol{padding-left:10px}#toc-content ol li{padding-left:10px}#toc-content .toc-link:hover{color:#42b983;font-weight:700;text-decoration:underline}#toc-content .toc-link::before{background-color:transparent;max-height:25px;position:absolute;right:23.5vw;display:block}#toc-content .is-active-link{color:#42b983}#floating-toc-btn{position:fixed;right:15px;bottom:76px;padding-top:15px;margin-bottom:0;z-index:998}#floating-toc-btn .btn-floating{width:48px;height:48px}#floating-toc-btn .btn-floating i{line-height:48px;font-size:1.4rem}</style><div class="row"><div id="main-content" class="col s12 m12 l9"><div id="artDetail"><div class="card"><div class="card-content article-info"><div class="row tag-cate"><div class="col s7"><div class="article-tag"><a href="/tags/%E7%AE%97%E6%B3%95/"><span class="chip bg-color">算法</span></a> <a href="/tags/C%E8%AF%AD%E8%A8%80/"><span class="chip bg-color">C语言</span></a></div></div><div class="col s5 right-align"><div class="post-cate"><i class="fas fa-bookmark fa-fw icon-category"></i> <a href="/categories/%E7%AC%94%E8%AE%B0/" class="post-category">笔记</a></div></div></div><div class="post-info"><div class="post-date info-break-policy"><i class="far fa-calendar-minus fa-fw"></i> 发布日期:&nbsp;&nbsp; 2021-12-18</div><div class="post-date info-break-policy"><i class="far fa-calendar-check fa-fw"></i> 更新日期:&nbsp;&nbsp; 2021-12-18</div><div class="info-break-policy"><i class="far fa-file-word fa-fw"></i> 文章字数:&nbsp;&nbsp; 5.8k</div><div class="info-break-policy"><i class="far fa-clock fa-fw"></i> 阅读时长:&nbsp;&nbsp; 31 分</div><div id="busuanzi_container_page_pv" class="info-break-policy"><i class="far fa-eye fa-fw"></i> 阅读次数:&nbsp;&nbsp;<span id="busuanzi_value_page_pv"></span></div></div></div><hr class="clearfix"><link rel="stylesheet" href="/libs/prism/prism.css"><div class="card-content article-card-content"><div id="articleContent"><h1 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h1><h2 id="Tree"><a href="#Tree" class="headerlink" title="Tree"></a>Tree</h2><h3 id="binary-tree-c"><a href="#binary-tree-c" class="headerlink" title="binary_tree.c"></a>binary_tree.c</h3><pre class="line-numbers language-C" data-language="C"><code class="language-C">#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+typedef char ElemType;
+
+typedef struct BITNode
+{
+    ElemType data;
+    struct BITNode *LChild, *RChild;
+}BITNode, *BiTree;
+
+//创建一个二叉树，约定前序遍历的方式输入
+void CreateBiTree(BiTree *T)
+{
+    char c;
+    scanf("%c", &amp;c);
+
+    if(' '==c)
+    {
+        *T=NULL;
+    }
+    else
+    {
+        *T=(BITNode *)malloc(sizeof(BITNode));
+        (*T)-&gt;data=c;
+        CreateBiTree(&amp;(*T)-&gt;LChild);
+        CreateBiTree(&amp;(*T)-&gt;RChild);
+    }
+}
+
+void visit(char c, int level)
+{
+    printf("%c 位于第%d层\n", c, level);
+}
+
+void PreOrderTraverse(BiTree T, int level)
+{
+    if(T)
+    {
+        visit(T-&gt;data, level);
+        PreOrderTraverse(T-&gt;LChild, level+1);
+        PreOrderTraverse(T-&gt;RChild, level+1);
+    }
+}
+
+int main()
+{
+    int level=1;
+    BiTree T=NULL;
+    CreateBiTree(&amp;T);
+    PreOrderTraverse(T,level);
+    return 0;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="parent-child-tree"><a href="#parent-child-tree" class="headerlink" title="parent_child_tree"></a>parent_child_tree</h3><pre class="line-numbers language-C" data-language="C"><code class="language-C">#define MAX_TREE_SIZE 100
+typedef char ElemType;
+
+//孩子结点
+typedef struct CTNode
+{
+    int child;                       //存放孩子结点的下标
+    struct CTNode *next;            //指向下一个孩子结点的指针
+}*ChildPtr;
+
+
+typedef struct 
+{
+    ElemType data;                   //存放树的结点内的数据
+    int parent;                      //存放双亲的位置
+    ChildPtr firstchild;             //指向第一个孩子结点；
+}CTBox;
+
+
+typedef struct
+{
+    CTBox nodes[MAX_TREE_SIZE];     //结点数组；
+    int r, n;
+}PCTREE；<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="threaded-binary-tree"><a href="#threaded-binary-tree" class="headerlink" title="threaded_binary_tree"></a>threaded_binary_tree</h3><pre class="line-numbers language-C" data-language="C"><code class="language-C">#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+
+typedef char ElemType;
+//线索存储标识位
+//Link(0):表示指向左右孩子的指针
+//Thread(1)：表示指向前驱后继的线索
+typedef enum 
+{
+    Link, Thread
+}PointerTag;
+
+typedef struct BiThrNode
+{
+    char data;
+    struct BiThrNode *LChild, *RChild;
+    PointerTag Ltag;
+    PointerTag Rtag;
+}BiThrNode, *BiThrTree;
+
+//全局变量，始终指向刚刚访问过的结点
+BiThrTree pre;
+
+//创建一颗二叉树，约定用前序遍历输入数据
+void CreateBiThrTree(BiThrTree *T)
+{
+    char c;
+    scanf("%c", &amp;c);
+    if(' '== c)
+    {
+        *T=NULL;
+    }
+    else
+    {
+        *T = (BiThrNode *)malloc(sizeof(BiThrNode));
+        (*T)-&gt;data= c;
+        (*T)-&gt;Ltag= Link;
+        (*T)-&gt;Rtag= Link;
+
+        CreateBiThrTree(&amp;(*T)-&gt;LChild);
+        CreateBiThrTree(&amp;(*T)-&gt;RChild);
+    }
+}
+
+//中序遍历线索化
+void InThreading(BiThrTree T)
+{
+    if(T)
+    {
+        InThreading(T-&gt;LChild);   //递归左孩子线索化
+
+        //左空记录前驱，右空记录后继；
+        if(!T-&gt;LChild)            //如果该结点没有左孩子，设置Ltag为Thread，并把LChild指向刚刚访问的结点
+        {
+            T-&gt;Ltag=Thread;
+            T-&gt;LChild=pre;
+        }
+
+        if(!pre-&gt;RChild)
+        {
+            pre-&gt;Rtag=Thread;
+            pre-&gt;RChild=T;
+        }
+
+        pre = T;                 
+
+        InThreading(T-&gt;RChild);   //递归右孩子线索化
+    }
+
+}
+
+//增加头结点；
+void InOrderThreading(BiThrTree *p, BiThrTree T)
+{
+    *p= (BiThrNode *)malloc(sizeof(BiThrNode));
+    
+    (*p)-&gt;Rtag=Thread;
+    (*p)-&gt;RChild=*p;
+
+    (*p)-&gt;Ltag=Link;
+    if(!T)
+    {
+        (*p)-&gt;LChild=*p;
+    }
+    else
+    {
+        (*p)-&gt;LChild=T;
+
+        pre = *p;
+        InThreading(T);
+        
+        pre-&gt;Rtag=Thread;     //收尾
+        pre-&gt;RChild=*p;
+        (*p)-&gt;RChild=pre;
+    }
+}
+
+//中序遍历二叉树，非递归
+void InOrderTraverse_Thr(BiThrTree T)
+{
+    BiThrTree p;
+    p = T-&gt;LChild;
+    while(p!=T)
+    {
+        while(p-&gt;Ltag==Link)
+            p=p-&gt;LChild;
+        printf("%c",p-&gt;data);
+        while(p-&gt;Rtag==Thread &amp;&amp; p-&gt;RChild!=T)
+        {
+            p=p-&gt;RChild;
+            printf("%c",p-&gt;data);
+        }
+        p=p-&gt;RChild;
+    }
+}
+
+int main()
+{
+    BiThrTree p, T = NULL;
+    CreateBiThrTree(&amp;T);
+    InOrderThreading(&amp;p, T);
+    printf("输出结果是：");
+    InOrderTraverse_Thr(p);
+    return 0;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h2 id="Graph"><a href="#Graph" class="headerlink" title="Graph"></a>Graph</h2><h3 id="Adjacency-List"><a href="#Adjacency-List" class="headerlink" title="Adjacency_List"></a>Adjacency_List</h3><pre class="line-numbers language-C" data-language="C"><code class="language-C">#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+
+typedef char VertexType;
+typedef int EdgeType;
+#define MAXVES 100
+
+typedef struct EdgeNode                     //边表结点
+{
+    int adjvex;
+    EdgeType weight;
+    struct EdgeNode *next;
+}EdgeNode; 
+
+
+typedef struct VertexNode                    //顶点表结点
+{
+    VertexType data;
+    EdgeNode *firstedge;                     //边表头指针
+}VertexNode;
+
+
+typedef struct                               //图结构
+{
+    VertexNode VertexList[MAXVES];           //顶点表结点数组
+    int numVertexes, numEdges;
+}AdjList;
+
+
+void CreateAdjList(AdjList *G)
+{
+    int i, j, k;
+    EdgeNode *e;
+    printf("输入顶点数和边数\n");
+    scanf("%d, %d", &amp;G-&gt;numVertexes, &amp;G-&gt;numEdges);
+
+    for(i=0; i&lt;G-&gt;numVertexes; i++)
+    {
+        scanf("%c",&amp;G-&gt;VertexList[i].data);           //输入顶点信息
+        G-&gt;VertexList[i].firstedge=NULL;         //边表置空
+    }
+
+    for(k=0; k&lt;G-&gt;numEdges; k++)
+    {
+        printf("输入边的顶点序号\n");
+        scanf("%d,%d", i, j);
+
+        e=(EdgeNode*)malloc(sizeof(EdgeNode)); //生成边表结点
+        if(!e)
+            exit(0);
+        //头插法
+        e-&gt;adjvex=i;                           //边表结点的顶点数据输入
+        e-&gt;next=G-&gt;VertexList[i].firstedge;       //边表结点的指向边表头指针
+        G-&gt;VertexList[i].firstedge=e;             //修改边表头指针为e
+
+        e=(EdgeNode*)malloc(sizeof(EdgeNode));
+        if(!e)
+            exit(0);
+        e-&gt;adjvex=j;
+        e-&gt;next=G-&gt;VertexList[j].firstedge;
+        G-&gt;VertexList[j].firstedge=e;
+    }
+}  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="Adjacency-Matrix"><a href="#Adjacency-Matrix" class="headerlink" title="Adjacency_Matrix"></a>Adjacency_Matrix</h3><pre class="line-numbers language-C" data-language="C"><code class="language-C">#include&lt;stdio.h&gt;
+typedef char VertexType;
+typedef int EdgeType;
+#define MAXVEX 100
+#define INFINITY 65535
+
+
+typedef struct
+{
+    VertexType VexList[MAXVEX];      //顶点表
+    EdgeType arc[MAXVEX][MAXVEX]; //边表
+    int numVertexes, numEdges;    //顶点数和边数
+}MGraph;
+
+void CreateMGraph(MGraph *G)
+{
+    int i, j, k, w;
+    printf("输入顶点数和边数\n");
+    scanf("%d,%d", &amp;G-&gt;numVertexes, &amp;G-&gt;numEdges);
+    fflush(stdin);
+
+    printf("请输入顶点信息\n");
+    for(i=0; i&lt;G-&gt;numVertexes; i++)                 //读入顶点
+    {
+        scanf("%c", &amp;G-&gt;VexList[i]);
+    }
+    fflush(stdin);
+
+    for(i=0; i&lt;G-&gt;numVertexes; i++)                 //初始化邻接矩阵
+        for(j=0; j&lt;G-&gt;numVertexes; j++)
+        {
+            G-&gt;arc[i][j]=INFINITY;
+        }
+
+    printf("请输入边的下标i，j和权值w\n");
+    for(k=0; k&lt;G-&gt;numEdges; k++)                    //读入边，建立邻接矩阵
+    {
+        scanf("%d, %d, %d", &amp;i, &amp;j, &amp;w);
+        G-&gt;arc[i][j]=w;
+        G-&gt;arc[j][i]=G-&gt;arc[i][j];    }
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="Orthogonal"><a href="#Orthogonal" class="headerlink" title="Orthogonal"></a>Orthogonal</h3><pre class="line-numbers language-C" data-language="C"><code class="language-C">#include&lt;stdio.h&gt;
+#define MAX_VERTEX_NUM 10
+
+typedef char VertexData;
+typedef enum{DG,DN,UDG,UDN}GraphKind;    //图的种类
+
+typedef struct ArcNode
+{
+    int tailvex, headvex;
+    struct ArcNode *hlink, *tlink; 
+}ArcNode;                                //弧表结点
+
+typedef struct VertexNode
+{
+    VertexData data;
+    ArcNode *firstin, *firstout;
+}VertexNode;                             //顶点表结点
+
+typedef struct 
+{
+    VertexNode vertexList[MAX_VERTEX_NUM];   //顶点表数组
+    int vernum, arcnum;
+    GraphKind kind;
+}OrthList;                               //十字邻表
+
+void CreateOrthList(OrthList *g)
+{
+    int i, j, k;
+    ArcNode *e;
+    printf("请输入顶点数和弧数\n");
+    scanf("%d,%d", &amp;g-&gt;vernum, &amp;g-&gt;arcnum);
+    for(i=0; i&lt;g-&gt;vernum; i++)
+    {
+        printf("请输入顶点信息\n");
+        scanf("%c", &amp;g-&gt;vertexList[i].data);
+
+        g-&gt;vertexList[i].firstin=NULL;
+        g-&gt;vertexList[i].firstout=NULL;
+    }
+
+    for(k=0; k&lt;g-&gt;arcnum; k++)
+    {
+        printf("请输入边的关联点下标");
+        scanf("%d,%d", &amp;i, &amp;j);              //i是弧尾，j是弧头
+
+        e=(ArcNode*)malloc(sizeof(ArcNode));
+        if(!e)
+            exit(0);
+        //头插法
+        e-&gt;headvex=j;                         //插入在顶点i的出边，顶点j的入边
+        e-&gt;tailvex=i;    
+
+        e-&gt;tlink=g-&gt;vertexList[i].firstout;       
+        g-&gt;vertexList[i].firstout=e;
+        
+        e-&gt;hlink=g-&gt;vertexList[j].firstin;       
+        g-&gt;vertexList[j].firstin=e;
+    }
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="BFSTranverse-AdjMatric"><a href="#BFSTranverse-AdjMatric" class="headerlink" title="BFSTranverse_AdjMatric"></a>BFSTranverse_AdjMatric</h3><pre class="line-numbers language-C" data-language="C"><code class="language-C">#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+typedef char VertexType;
+typedef int EdgeType;
+typedef int ElemType;
+#define MAXVEX 100
+#define INFINITY 65535
+#define FALSE 0
+#define TRUE 1
+#define MAX 10
+int visit[MAX];
+
+typedef struct QNode{
+    ElemType data;
+    struct QNode *next;
+}QNode, *QueuePrt;//定义结点结构，结点指针
+
+typedef struct{
+    QueuePrt front, rear;
+}LinkQueue;      //定义链式队列结构，结构包括队头指针和队尾指针
+
+typedef struct
+{
+    VertexType vexs[MAXVEX];      //顶点表
+    EdgeType arc[MAXVEX][MAXVEX]; //边表
+    int numVertexes, numEdges;    //顶点数和边数
+}MGraph;
+
+void InitQueue(LinkQueue *q)
+{
+    q-&gt;front=q-&gt;rear=(QueuePrt)malloc(sizeof(QNode));
+    if( !q-&gt;front )
+        exit(0);
+    q-&gt;front-&gt;next= NULL;
+}
+
+void InsertQueue(LinkQueue *q, ElemType e)
+{
+    QueuePrt p;
+    p = (QueuePrt)malloc(sizeof(QNode));
+    if(!p)
+        exit(0);
+    p-&gt;data = e;
+    p-&gt;next = NULL;
+    q-&gt;rear-&gt;next = p;
+    q-&gt;rear = p;
+}
+
+void DeleteQueue(LinkQueue *q, ElemType *e)
+{
+    QueuePrt p;
+    if(q-&gt;front == q-&gt;rear)
+    {
+        return;                           //?
+    }
+    p = q-&gt;front-&gt;next;
+    *e = p-&gt;data;
+    q-&gt;front-&gt;next = p-&gt;next;
+    if( q-&gt;rear == p )
+    {
+        q-&gt;rear = q-&gt;front;
+    }
+    free(p);
+    p = NULL;
+}
+
+int QueueEmpty(LinkQueue q)
+{
+    if(q.front == q.rear)
+        return 1;
+    else
+        return 0;
+}
+
+void CreateMGraph(MGraph *G)
+{
+    int i, j, k;
+    printf("输入顶点数和边数\n");
+    scanf("%d,%d", &amp;G-&gt;numVertexes, &amp;G-&gt;numEdges);
+    fflush(stdin);
+
+    printf("输入顶点信息\n");
+    for(i=0; i&lt;G-&gt;numVertexes; i++)                 //读入顶点
+    {
+        scanf("%c", &amp;G-&gt;vexs[i]);
+    }
+
+    fflush(stdin);
+    for(i=0; i&lt;G-&gt;numVertexes; i++)                 //初始化邻接矩阵
+        for(j=0; j&lt;G-&gt;numVertexes; j++)
+        {
+            G-&gt;arc[i][j]=INFINITY;
+        }
+
+    printf("请输入边的下标i，j和权值w\n");
+    for(k=0; k&lt;G-&gt;numEdges; k++)                    //读入边，建立邻接矩阵
+    {
+        scanf("%d, %d", &amp;i, &amp;j);
+        G-&gt;arc[i][j]=1;
+        G-&gt;arc[j][i]=G-&gt;arc[i][j];   
+    }
+}
+
+void BFSTraverse(MGraph G)
+{
+    int i, j;
+    LinkQueue Q;
+
+    for(i=0; i&lt;G.numVertexes; i++)
+    {
+        visit[i]=FALSE;
+    }
+
+    InitQueue(&amp;Q);
+
+    for(i=0; i&lt;G.numVertexes; i++)
+    {
+        if(!visit[i])
+        {
+            printf("%c", G.vexs[i]);
+            visit[i]=TRUE;
+            InsertQueue(&amp;Q, i);
+
+            while(!QueueEmpty(Q))
+            {
+                DeleteQueue(&amp;Q, &amp;i);
+                for(j=0; j&lt;G.numVertexes; j++)
+                {
+                    if(G.arc[i][j]==1 &amp;&amp; !visit[j])
+                    {
+                        printf("%c", G.vexs[j]);
+                        visit[j]=TRUE;
+                        InsertQueue(&amp;Q, j);
+                    }
+                }
+            }
+        }
+    }
+}
+
+int main()
+{
+    MGraph G;
+    CreateMGraph(&amp;G);
+    BFSTraverse(G);
+    return 0;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="DFSTraverse-AdjList"><a href="#DFSTraverse-AdjList" class="headerlink" title="DFSTraverse_AdjList"></a>DFSTraverse_AdjList</h3><pre class="line-numbers language-C" data-language="C"><code class="language-C">#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+typedef char VertexType;
+typedef int EdgeType;
+#define MAXVES 100
+#define TRUE 1
+#define FALSE 0
+#define MAX 10
+int visit[MAX];
+
+typedef struct EdgeNode                     //边表结点
+{
+    int adjvex;
+    EdgeType weight;
+    struct EdgeNode *next;
+}EdgeNode; 
+
+typedef struct VertexNode                    //顶点表结点
+{
+    VertexType data;
+    EdgeNode *firstedge;                     //边表头指针
+}VertexNode;
+
+typedef struct                               //图结构
+{
+    VertexNode VertexList[MAXVES];           //顶点表结点数组
+    int numVertexes, numEdges;
+}AdjList;
+
+void CreateAdjList(AdjList *G)
+{
+    int i, j, k;
+    EdgeNode *e;
+    printf("输入顶点数和边数\n");
+    scanf("%d, %d", &amp;G-&gt;numVertexes, &amp;G-&gt;numEdges);
+    fflush(stdin);
+
+    printf("请输入顶点信息\n");
+    for(i=0; i&lt;G-&gt;numVertexes; i++)
+    {
+        scanf("%c",&amp;G-&gt;VertexList[i].data);           //输入顶点信息
+        G-&gt;VertexList[i].firstedge=NULL;         //边表置空
+    }
+
+    fflush(stdin);
+    printf("输入边的顶点序号\n");
+    for(k=0; k&lt;G-&gt;numEdges; k++)
+    {
+        scanf("%d,%d", &amp;i, &amp;j);
+
+        e=(EdgeNode*)malloc(sizeof(EdgeNode)); //生成边表结点
+        if(!e)
+            exit(0);
+        //头插法
+        e-&gt;adjvex=i;                           //边表结点的顶点数据输入
+        e-&gt;next=G-&gt;VertexList[i].firstedge;       //边表结点的指向边表头指针
+        G-&gt;VertexList[i].firstedge=e;             //修改边表头指针为e
+
+        e=(EdgeNode*)malloc(sizeof(EdgeNode));
+        if(!e)
+            exit(0);
+        e-&gt;adjvex=j;
+        e-&gt;next=G-&gt;VertexList[j].firstedge;
+        G-&gt;VertexList[j].firstedge=e;
+    }
+}  
+
+void DFS(AdjList G, int i)
+{
+    EdgeNode *p;
+    visit[i]=TRUE;
+    printf("%c", G.VertexList[i].data);
+
+    p=G.VertexList[i].firstedge;
+    while(p)
+    {
+        if(!visit[p-&gt;adjvex])
+            DFS(G, p-&gt;adjvex);
+        p=p-&gt;next;
+    }
+}
+
+void DFSTraverse(AdjList G)
+{
+    int i;
+    for(i=0; i&lt;G.numVertexes; i++)
+        visit[i] = FALSE;
+    for(i=0; i&lt;G.numVertexes; i++)
+        if(!visit[i])
+            DFS(G, i);
+} 
+
+int main()
+{
+    AdjList G;
+    CreateAdjList(&amp;G);
+    DFSTraverse(G);
+    return 0;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="MiniSpanTree-Kruskal"><a href="#MiniSpanTree-Kruskal" class="headerlink" title="MiniSpanTree_Kruskal"></a>MiniSpanTree_Kruskal</h3><pre class="line-numbers language-C" data-language="C"><code class="language-C">#include&lt;stdio.h&gt;
+#define EdgeMAX 15
+typedef char VertexType;
+typedef int EdgeType;
+#define MAXVEX 100
+#define INFINITY 65535
+
+typedef struct
+{
+    int begin;
+    int end;
+    int weight;
+}Edge, EdgeList[EdgeMAX];
+
+typedef struct
+{
+    VertexType VexList[MAXVEX];      //顶点表
+    EdgeType arc[MAXVEX][MAXVEX]; //边表
+    int numVertexes, numEdges;    //顶点数和边数
+}MGraph;
+
+void CreateMGraph(MGraph *G)
+{
+    int i, j, k, w;
+    printf("输入顶点数和边数\n");
+    scanf("%d,%d", &amp;G-&gt;numVertexes, &amp;G-&gt;numEdges);
+    fflush(stdin);
+
+    printf("请输入顶点信息\n");
+    for(i=0; i&lt;G-&gt;numVertexes; i++)                 //读入顶点
+    {
+        scanf("%c", &amp;G-&gt;VexList[i]);
+    }
+    fflush(stdin);
+
+    for(i=0; i&lt;G-&gt;numVertexes; i++)                 //初始化邻接矩阵
+        for(j=0; j&lt;G-&gt;numVertexes; j++)
+        {
+            G-&gt;arc[i][j]=INFINITY;
+        }
+
+    printf("请输入边的下标i，j和权值w\n");
+    for(k=0; k&lt;G-&gt;numEdges; k++)                    //读入边，建立邻接矩阵
+    {
+        scanf("%d, %d, %d", &amp;i, &amp;j, &amp;w);
+        G-&gt;arc[i][j]=w;
+        G-&gt;arc[j][i]=G-&gt;arc[i][j];    }
+}
+
+void TransEdge( EdgeList edge , MGraph G )
+{
+    int i , j  , k = 0  ;
+    Edge t ;
+    for( i = 0 ; i &lt; G.numVertexes ; i++ )
+        for(  j = i + 1 ; j &lt; G.numVertexes ; j++ )
+            if( G.arc[ i ][ j ] &gt; 0 &amp;&amp; G.arc[ i ][ j ] &lt; INFINITY )
+            {
+                edge[ k ].begin = i ;
+                edge[ k ].end = j ;
+                edge[ k ].weight = G.arc[ i ][ j ] ;
+                k++ ;
+            }
+
+    for( i = 0 ; i &lt; G.numEdges - 1 ; i++ )
+        for( j = 0 ; j &lt; G.numEdges - i - 1 ; j++ )
+            if( edge[ j ].weight &gt; edge[ j + 1 ].weight )
+            {
+                t = edge[ j ] ;
+                edge[ j ] = edge[ j+ 1 ] ;
+                edge[ j+ 1 ] = t ;
+            }
+}
+
+int Find(int *parent, int f)
+{
+    while(parent[f]&gt;0)
+        f=parent[f];
+    return f;
+}
+
+void MiniSpanTree_Kruskal( MGraph G)  //每次选择最小权值的边，判断边的起始点是否同源，即选择此边后是否会形成闭环
+{
+    int i, m, n;
+    EdgeList edge;
+    int parent[MAXVEX];             //定义一个家谱
+
+    TransEdge(edge, G);             //转换为边集数组，同时按权值进行排序
+
+    for(i=0;i&lt;G.numVertexes;i++)
+        parent[i]=0;
+
+    for(i=0;i&lt;G.numEdges;i++)
+    {
+        n=Find(parent, edge[i].begin);   //找到begin点的祖宗
+        m=Find(parent, edge[i].end);     //找到end点的祖宗
+
+        if(n!=m)
+        {
+            parent[n]=m;
+            printf("(%d,%d)-%d\n",edge[i].begin,edge[i].end, edge[i].weight);
+        }
+    }
+
+    for(i=0;i&lt;G.numVertexes;i++)
+    {
+        printf("%d",parent[i]);
+    }
+}
+
+int main( void )
+{
+    MGraph G ;
+    CreateMGraph( &amp;G ) ;
+    MiniSpanTree_Kruskal( G ) ;
+    return 0 ;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="MiniSpanTree-Prim"><a href="#MiniSpanTree-Prim" class="headerlink" title="MiniSpanTree_Prim"></a>MiniSpanTree_Prim</h3><pre class="line-numbers language-C" data-language="C"><code class="language-C">#include&lt;stdio.h&gt;
+#define EdgeMAX 15
+typedef char VertexType;
+typedef int EdgeType;
+#define MAXVEX 100
+#define INFINITY 65535
+
+typedef struct
+{
+    int begin;
+    int end;
+    int weight;
+}Edge, EdgeList[EdgeMAX];
+
+typedef struct
+{
+    VertexType VexList[MAXVEX];      //顶点表
+    EdgeType arc[MAXVEX][MAXVEX]; //边表
+    int numVertexes, numEdges;    //顶点数和边数
+}MGraph;
+
+void CreateMGraph(MGraph *G)
+{
+    int i, j, k, w;
+    printf("输入顶点数和边数\n");
+    scanf("%d,%d", &amp;G-&gt;numVertexes, &amp;G-&gt;numEdges);
+    fflush(stdin);
+
+    printf("请输入顶点信息\n");
+    for(i=0; i&lt;G-&gt;numVertexes; i++)                 //读入顶点
+    {
+        scanf("%c", &amp;G-&gt;VexList[i]);
+    }
+    fflush(stdin);
+
+    for(i=0; i&lt;G-&gt;numVertexes; i++)                 //初始化邻接矩阵
+        for(j=0; j&lt;G-&gt;numVertexes; j++)
+        {
+            G-&gt;arc[i][j]=INFINITY;
+        }
+
+    printf("请输入边的下标i，j和权值w\n");
+    for(k=0; k&lt;G-&gt;numEdges; k++)                    //读入边，建立邻接矩阵
+    {
+        scanf("%d, %d, %d", &amp;i, &amp;j, &amp;w);
+        G-&gt;arc[i][j]=w;
+        G-&gt;arc[j][i]=G-&gt;arc[i][j];    }
+}
+
+void TransEdge( EdgeList edge , MGraph G )
+{
+    int i , j  , k = 0  ;
+    Edge t ;
+    for( i = 0 ; i &lt; G.numVertexes ; i++ )
+        for(  j = i + 1 ; j &lt; G.numVertexes ; j++ )
+            if( G.arc[ i ][ j ] &gt; 0 &amp;&amp; G.arc[ i ][ j ] &lt; INFINITY )
+            {
+                edge[ k ].begin = i ;
+                edge[ k ].end = j ;
+                edge[ k ].weight = G.arc[ i ][ j ] ;
+                k++ ;
+            }
+
+    for( i = 0 ; i &lt; G.numEdges - 1 ; i++ )
+        for( j = 0 ; j &lt; G.numEdges - i - 1 ; j++ )
+            if( edge[ j ].weight &gt; edge[ j + 1 ].weight )
+            {
+                t = edge[ j ] ;
+                edge[ j ] = edge[ j+ 1 ] ;
+                edge[ j+ 1 ] = t ;
+            }
+}
+
+int Find(int *parent, int f)
+{
+    while(parent[f]&gt;0)
+        f=parent[f];
+    return f;
+}
+
+void MiniSpanTree_Kruskal( MGraph G)  //每次选择最小权值的边，判断边的起始点是否同源，即选择此边后是否会形成闭环
+{
+    int i, m, n;
+    EdgeList edge;
+    int parent[MAXVEX];             //定义一个家谱
+
+    TransEdge(edge, G);             //转换为边集数组，同时按权值进行排序
+
+    for(i=0;i&lt;G.numVertexes;i++)
+        parent[i]=0;
+
+    for(i=0;i&lt;G.numEdges;i++)
+    {
+        n=Find(parent, edge[i].begin);   //找到begin点的祖宗
+        m=Find(parent, edge[i].end);     //找到end点的祖宗
+
+        if(n!=m)
+        {
+            parent[n]=m;
+            printf("(%d,%d)-%d\n",edge[i].begin,edge[i].end, edge[i].weight);
+        }
+    }
+
+    for(i=0;i&lt;G.numVertexes;i++)
+    {
+        printf("%d",parent[i]);
+    }
+}
+
+int main( void )
+{
+    MGraph G ;
+    CreateMGraph( &amp;G ) ;
+    MiniSpanTree_Kruskal( G ) ;
+    return 0 ;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="ShortestPath-Dijkstra"><a href="#ShortestPath-Dijkstra" class="headerlink" title="ShortestPath_Dijkstra"></a>ShortestPath_Dijkstra</h3><pre class="line-numbers language-C" data-language="C"><code class="language-C">#include&lt;stdio.h&gt;
+#define MAXVEX 9
+#define INFINITY 65535
+typedef char VertexType;
+typedef int EdgeType;
+typedef int Pathmatrix[MAXVEX];
+typedef int ShortPathTable[MAXVEX];
+typedef struct
+{
+    VertexType VexList[MAXVEX];      //顶点表
+    EdgeType arc[MAXVEX][MAXVEX]; //边表
+    int numVertexes, numEdges;    //顶点数和边数
+}MGraph;
+
+void CreateMGraph(MGraph *G)
+{
+    int i, j, k, w;
+    printf("输入顶点数和边数\n");
+    scanf("%d,%d", &amp;G-&gt;numVertexes, &amp;G-&gt;numEdges);
+    fflush(stdin);
+
+    printf("请输入顶点信息\n");
+    for(i=0; i&lt;G-&gt;numVertexes; i++)                 //读入顶点
+    {
+        scanf("%c", &amp;G-&gt;VexList[i]);
+    }
+    fflush(stdin);
+
+    for(i=0; i&lt;G-&gt;numVertexes; i++)                 //初始化邻接矩阵
+        for(j=0; j&lt;G-&gt;numVertexes; j++)
+        {
+            G-&gt;arc[i][j]=INFINITY;
+        }
+
+    printf("请输入边的下标i，j和权值w\n");
+    for(k=0; k&lt;G-&gt;numEdges; k++)                    //读入边，建立邻接矩阵
+    {
+        scanf("%d, %d, %d", &amp;i, &amp;j, &amp;w);
+        G-&gt;arc[i][j]=w;
+        G-&gt;arc[j][i]=G-&gt;arc[i][j];    }
+}
+
+void ShortestPath_Dijkstra(MGraph G, int v0, Pathmatrix *P, ShortPathTable *D)
+{                                               //P记录上位点，D记录到v0的最短路径
+    int v,w,min,k;
+    int final[MAXVEX];                          //判断是否求得到某点的最短路径
+
+    for(v=0; v&lt;G.numVertexes; v++)
+    {
+        final[v]=0;                             //初始化为0，所有点最短路径都没有取得    
+        (*D)[v]=G.arc[v0][v];
+        (*P)[v]=0;
+    }
+    final[0]=1;                                 //v0点不需要求最短路径
+    (*D)[v0]=0;
+
+    for(v=1;v&lt;G.numVertexes;v++)
+    {
+        min=INFINITY;
+        for(w=0;w&lt;G.numVertexes;w++)            //寻找离v0最近的点
+        {
+            if(!final[w] &amp;&amp; (*D)[w]&lt;min)
+            {
+                k=w;
+                min=(*D)[w];
+            }
+        }
+        printf("%d-&gt;%d\n",(*P)[k],k);
+        final[k]=1;
+        for(w=0;w&lt;G.numVertexes;w++)            //更新到v0的最短路径，以及“上位点”
+        {
+            if(!final[w] &amp;&amp; min+G.arc[k][w]&lt;(*D)[w])
+            {
+                (*D)[w]=min+G.arc[k][w];
+                (*P)[w]=k;
+            }
+        }
+    }
+}
+
+int main()
+{
+    MGraph G;
+    Pathmatrix P;
+    ShortPathTable D;
+    CreateMGraph(&amp;G);
+    ShortestPath_Dijkstra(G, 0, &amp;P, &amp;D);
+    return 0;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="ShortestPath-Floyd"><a href="#ShortestPath-Floyd" class="headerlink" title="ShortestPath_Floyd"></a>ShortestPath_Floyd</h3><pre class="line-numbers language-C" data-language="C"><code class="language-C">#include&lt;stdio.h&gt;
+#define MAXVEX 9
+#define INFINITY 65535
+typedef char VertexType;
+typedef int EdgeType;
+typedef int Pathmatrix[MAXVEX][MAXVEX];
+typedef int ShortPathTable[MAXVEX][MAXVEX];
+typedef struct
+{
+    VertexType VexList[MAXVEX];      //顶点表
+    EdgeType arc[MAXVEX][MAXVEX]; //边表
+    int numVertexes, numEdges;    //顶点数和边数
+}MGraph;
+
+void CreateMGraph(MGraph *G)
+{
+    int i, j, k, w;
+    printf("输入顶点数和边数\n");
+    scanf("%d,%d", &amp;G-&gt;numVertexes, &amp;G-&gt;numEdges);
+    fflush(stdin);
+
+    printf("请输入顶点信息\n");
+    for(i=0; i&lt;G-&gt;numVertexes; i++)                 //读入顶点
+    {
+        scanf("%c", &amp;G-&gt;VexList[i]);
+    }
+    fflush(stdin);
+
+    for(i=0; i&lt;G-&gt;numVertexes; i++)                 //初始化邻接矩阵
+        for(j=0; j&lt;G-&gt;numVertexes; j++)
+        {
+            G-&gt;arc[i][j]=INFINITY;
+        }
+
+    printf("请输入边的下标i，j和权值w\n");
+    for(k=0; k&lt;G-&gt;numEdges; k++)                    //读入边，建立邻接矩阵
+    {
+        scanf("%d, %d, %d", &amp;i, &amp;j, &amp;w);
+        G-&gt;arc[i][j]=w;
+        G-&gt;arc[j][i]=G-&gt;arc[i][j];    }
+}
+
+void ShortPath_Floyd(MGraph G, Pathmatrix *P, ShortPathTable *D)
+{
+    int v, w, k;
+    for(v=0;v&lt;G.numVertexes;v++)
+    {
+        for(w=0;w&lt;G.numVertexes;w++)
+        {
+            (*D)[v][w]=G.arc[v][w];
+            (*P)[v][w]=w;
+        }
+    }
+
+    for(k=0;k&lt;G.numVertexes;k++)
+    {
+        for(v=0;v&lt;G.numVertexes;v++)
+        {
+            for(w=0;w&lt;G.numVertexes;w++)
+            {
+                if((*D)[v][w]&gt;(*D)[v][k]+(*D)[k][w])
+                {
+                    (*D)[v][w]=(*D)[v][k]+(*D)[k][w];
+                    (*P)[v][w]=(*P)[v][k];
+                }
+            }
+        }
+    }
+}
+
+int main()
+{
+    int v, w, k;
+    MGraph G;
+    Pathmatrix P;
+    ShortPathTable D;
+    CreateMGraph(&amp;G);
+    ShortPath_Floyd(G, &amp;P, &amp;D);
+    
+    printf("请输入起始点\n");
+    scanf("%d%d",&amp;v,&amp;w);
+    printf("\n%d -&gt; %d 的最小路径为；%d\n", v, w, D[v][w]);
+    k = P[v][w];
+    printf("path: %d", v);//打印起点
+    while(k != w)
+    {
+        printf("-&gt; %d", k);//打印中间点
+        k = P[k][w]; 
+    }
+    printf("-&gt; %d\n", w);
+    return 0;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="Topological-Sorting-BFS"><a href="#Topological-Sorting-BFS" class="headerlink" title="Topological_Sorting_BFS"></a>Topological_Sorting_BFS</h3><p>​ 该算法又称为kahn算法。<br>​ 如果顶点之间只是具有偏序关系，那么拓扑排序的结果肯定不唯一；如果顶点之间是全序关系，那么拓扑排序得到的序列唯一.</p><pre class="line-numbers language-C" data-language="C"><code class="language-C">#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+#define OK 1
+#define ERROR 0
+#define Status int
+typedef int VertexType;
+typedef int EdgeType;
+#define MAXVES 100
+
+typedef struct EdgeNode                     //边表结点
+{
+    int adjvex;
+    int weight;
+    struct EdgeNode *next;
+}EdgeNode; 
+
+typedef struct VertexNode                    //顶点表结点
+{
+    VertexType data;
+    int in;                                  //顶点入度
+    EdgeNode *firstedge;                     //边表头指针
+}VertexNode;
+
+typedef struct                               //图结构
+{
+    VertexNode VertexList[MAXVES];           //顶点表结点数组
+    int numVertexes, numEdges;
+}AdjList;
+
+int *etv, *ltv;
+int *stack2;
+int top2;
+
+void CreateAdjList(AdjList *G)
+{
+    int i, j, k;
+    EdgeNode *e;
+    printf("输入顶点数和边数\n");
+    scanf("%d, %d", &amp;G-&gt;numVertexes, &amp;G-&gt;numEdges);
+    fflush(stdin);
+
+    printf("输入顶点信息和他的入度\n");
+    for(i=0; i&lt;G-&gt;numVertexes; i++)
+    {
+        scanf("%d",&amp;G-&gt;VertexList[i].data);      //输入顶点信息
+        scanf("%d",&amp;G-&gt;VertexList[i].in);
+        G-&gt;VertexList[i].firstedge=NULL;         //边表置空
+    }
+    fflush(stdin);
+    
+    printf("输入边的顶点序号\n");
+    for(k=0; k&lt;G-&gt;numEdges; k++)
+    {
+        scanf("%d,%d", &amp;i, &amp;j);
+
+        e=(EdgeNode*)malloc(sizeof(EdgeNode));   //生成边表结点
+        if(!e)
+            exit(0);
+        //头插法
+        e-&gt;adjvex=j;                             //边表结点的顶点数据输入
+        e-&gt;next=G-&gt;VertexList[i].firstedge;      //边表结点的指向边表头指针
+        G-&gt;VertexList[i].firstedge=e;            //修改边表头指针为e
+    }
+}  
+
+Status TopologicalSort(AdjList G)
+{
+    EdgeNode *e;
+    int i, k, gettop;
+    int top =0;
+    int count=0;
+    int *stack;
+
+    stack=(int *)malloc(G.numVertexes*sizeof(int));
+    for(i=0; i&lt;G.numVertexes; i++)
+    {
+        if(0==G.VertexList[i].in)
+        {
+            stack[++top]=i;
+        }
+    }
+
+	while( 0 != top )
+	{
+		/* 出栈 */
+		gettop = stack[top--];
+        printf("%d -&gt; ", G.VertexList[gettop].data);
+		
+		/* 记录拓扑排序输出顶点个数(用以判断是否存在环路) */
+		count++;
+
+		/* 取出一个入度为0的顶点后 以它为前驱的顶点入度-1 */
+		for( e=G.VertexList[gettop].firstedge; e; e=e-&gt;next )
+		{
+			k = e-&gt;adjvex;
+			/* 入度-1后若为0 则入栈 */
+			if( !(--G.VertexList[k].in) )
+			{
+				stack[++top] = k;
+			}
+		}
+	}
+
+	/* 如果count小于顶点数 说明存在环 */
+	if( count &lt; G.numVertexes)
+	{
+		return ERROR;
+	}
+	else
+	{
+		return OK;
+	}
+}
+
+int main()
+{
+	AdjList G;
+	CreateAdjList(&amp;G);
+	TopologicalSort(G);
+	return 0;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="CriticalPath"><a href="#CriticalPath" class="headerlink" title="CriticalPath"></a>CriticalPath</h3><pre class="line-numbers language-C" data-language="C"><code class="language-C">#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+#define OK 1
+#define ERROR 0
+#define Status int
+typedef int VertexType;
+typedef int EdgeType;
+#define MAXVES 100
+
+typedef struct EdgeNode                     //边表结点
+{
+    int adjvex;
+    int weight;
+    struct EdgeNode *next;
+}EdgeNode; 
+
+typedef struct VertexNode                    //顶点表结点
+{
+    VertexType data;
+    int in;                                  //顶点入度
+    EdgeNode *firstedge;                     //边表头指针
+}VertexNode;
+
+typedef struct                               //图结构
+{
+    VertexNode VertexList[MAXVES];           //顶点表结点数组
+    int numVertexes, numEdges;
+}AdjList;
+
+int *etv, *ltv;
+int *stack2;
+int top2;
+
+void CreateAdjList(AdjList *G)
+{
+    int i, j, k, t;
+    EdgeNode *e;
+    printf("输入顶点数和边数\n");
+    scanf("%d, %d", &amp;G-&gt;numVertexes, &amp;G-&gt;numEdges);
+    fflush(stdin);
+
+    printf("输入顶点信息和他的入度\n");
+    for(i=0; i&lt;G-&gt;numVertexes; i++)
+    {
+        scanf("%d",&amp;G-&gt;VertexList[i].data);           //输入顶点信息
+        scanf("%d",&amp;G-&gt;VertexList[i].in);
+        G-&gt;VertexList[i].firstedge=NULL;         //边表置空
+    }
+    fflush(stdin);
+    
+    printf("输入边的顶点序号\n");
+    for(k=0; k&lt;G-&gt;numEdges; k++)
+    {
+        scanf("%d,%d,%d", &amp;i, &amp;j, &amp;t);
+
+        e=(EdgeNode*)malloc(sizeof(EdgeNode)); //生成边表结点
+        if(!e)
+            exit(0);
+        //头插法
+        e-&gt;adjvex=j;
+        e-&gt;weight=t;                           //边表结点的顶点数据输入
+        e-&gt;next=G-&gt;VertexList[i].firstedge;       //边表结点的指向边表头指针
+        G-&gt;VertexList[i].firstedge=e;             //修改边表头指针为e
+    }
+}  
+
+Status TopologicalSort(AdjList G)
+{
+    EdgeNode *e;
+    int i, k, gettop;
+    int top =0;
+    int count=0;
+    int *stack;
+    stack=(int *)malloc(G.numVertexes*sizeof(int));
+    //将入度为0的顶点入栈
+    for(i=0; i&lt;G.numVertexes; i++)
+    {
+        if(0==G.VertexList[i].in)
+        {
+            stack[++top]=i;
+        }
+    }
+
+    //初始化
+    top2 = 0; 
+    etv=(int*)malloc(G.numVertexes*sizeof(int));
+    for(i=0;i&lt;G.numVertexes;i++)
+    {
+        etv[i]=0;
+    }  
+    stack2=(int*)malloc(G.numVertexes*sizeof(int));
+
+	while( 0 != top )
+	{
+		/* 出栈 */
+		gettop = stack[top--];
+		/* 记录拓扑排序输出顶点个数(用以判断是否存在环路) */
+		count++;
+        stack2[++top2]=gettop;
+
+		/* 取出一个入度为0的顶点后 以它为前驱的顶点入度-1 */
+		for( e=G.VertexList[gettop].firstedge; e; e=e-&gt;next )
+		{
+			k = e-&gt;adjvex;
+			/* 入度-1后若为0 则入栈 */
+			if( !(--G.VertexList[k].in) )
+			{
+				stack[++top] = k;
+			}
+            if(etv[gettop]+e-&gt;weight &gt; etv[k])
+                etv[k]=etv[gettop]+e-&gt;weight;
+		}
+	}
+
+	/* 如果count小于顶点数 说明存在环 */
+	if( count &lt; G.numVertexes)
+	{
+		return ERROR;
+	}
+	else
+	{
+		return OK;
+	}
+}
+
+void CriticalPath(AdjList G)
+{
+    EdgeNode *e;
+    int i, j, k, gettop;
+    int ete, lte;
+    TopologicalSort(G);
+    ltv=(int*)malloc(G.numVertexes*sizeof(int));
+    for(i=0;i&lt;G.numVertexes;i++)
+    {
+        ltv[i]=etv[G.numVertexes-1];
+    }
+    while(0!=top2)
+    {
+        gettop=stack2[top2--];
+        for(e=G.VertexList[gettop].firstedge;e;e=e-&gt;next)
+        {
+            k=e-&gt;adjvex;
+            if(ltv[k]-e-&gt;weight&lt;ltv[gettop])
+                ltv[gettop]=ltv[k]-e-&gt;weight;
+        }
+    }
+
+    for(j=0;j&lt;G.numVertexes;j++)
+    {
+        for(e=G.VertexList[j].firstedge;e;e=e-&gt;next)   //遍历以vj为起点的所有活动
+        {
+            k=e-&gt;adjvex;
+            ete=etv[j];
+            lte=ltv[k]-e-&gt;weight;
+            if(ete == lte)
+                printf("&lt;v%d,v%d&gt;length:%d\n",G.VertexList[j].data,G.VertexList[k].data,e-&gt;weight);
+        }
+    }
+}
+
+int main()
+{
+	AdjList G;
+	CreateAdjList(&amp;G);
+	CriticalPath(G);
+    system("pause");    //执行exe文件时，确保结果显示，防止闪退。
+	return 0;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h2 id="Search"><a href="#Search" class="headerlink" title="Search"></a>Search</h2><h3 id="Interpolation-Search"><a href="#Interpolation-Search" class="headerlink" title="Interpolation_Search"></a>Interpolation_Search</h3><pre class="line-numbers language-C" data-language="C"><code class="language-C">int Interpolation_Search(int *a, int n, int key)
+{
+    int low, high, mid;
+    low=1;
+    high=n;
+    while (low&lt;=high)
+    {
+        mid=low+(high-low)*(key-a[low])/(a[high]-a[low]);
+        //当系数取1/2时为折半查找
+        if(key==a[mid])
+            return mid;
+        else if(key&gt;=mid)
+        {
+            low=mid+1;
+        }
+        else
+        {
+            high=mid-1; 
+        }
+    }
+    return 0;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="Fibonacci-Search"><a href="#Fibonacci-Search" class="headerlink" title="Fibonacci_Search"></a>Fibonacci_Search</h3><pre class="line-numbers language-C" data-language="C"><code class="language-C">int F(int n)
+{
+    if(n==1||n==2)
+        return 1;
+    else    
+        return F(n-1)+F(n-2);
+}
+
+int Fibonacci_Search(int *a, int n, int key)
+{
+    int low, high, mid, i, k;
+    low=1;
+    high=n;
+    k=0;
+    //补全k层fibonacci数
+    while(n&gt;F(k)-1)             //n从0开始计数，所以要减一
+        k++;
+    for(i=n;i&lt;F(k)-1;i++)
+        a[i]=a[n];
+
+    while(low&lt;=high)
+    {
+        mid=low+F(k-1)-1;        //mid取在0.618的位置
+        if(key&lt;a[mid])
+        {
+            high=mid-1;
+            k=k-1;               //选择前面0.618分段继续查找
+        }
+        else if(key&gt;a[mid])
+        {
+            low=mid+1;
+            k=k-2;               //选择后面0.382分段继续查找
+        }
+        else
+        {
+            if(mid&lt;=n)
+                return mid;
+            else
+                return n;        //mid若在补全段，返回n
+        }
+    }
+    return 0;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="Bianry-Sort-Tree"><a href="#Bianry-Sort-Tree" class="headerlink" title="Bianry_Sort_Tree"></a>Bianry_Sort_Tree</h3><pre class="line-numbers language-C" data-language="C"><code class="language-C">#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+#define Status int
+#define FALSE 0
+#define TRUE 1
+typedef int ElemType;
+typedef struct BITNode
+{
+    ElemType data;
+    struct BITNode *LChild, *RChild;
+}BITNode, *BiTree;
+
+//创建一个二叉树，约定前序遍历的方式输入
+void CreateBiTree(BiTree *T)
+{
+    ElemType c;
+    scanf("%d", &amp;c);
+
+    if(' '==c)
+    {
+        *T=NULL;
+    }
+    else
+    {
+        *T=(BITNode *)malloc(sizeof(BITNode));
+        (*T)-&gt;data=c;
+        CreateBiTree(&amp;(*T)-&gt;LChild);
+        CreateBiTree(&amp;(*T)-&gt;RChild);
+    }
+}
+
+//一些理解：
+//树结构本身是一级结点指针，用BiTree找到根结点，用T-&gt;Child找到孩子结点，
+//所以在函数传入值中，仅是调用的话，用一级结点指针，涉及创建，改动值的时候用二级结构指针，如*p。
+//p指针存放查找路径上访问的最后一个结点
+//f指向T的双亲。
+Status SearchBST(BiTree T, int key, BiTree f, BiTree *p)
+{
+    if(!T)
+    {
+        *p=f;
+        return FALSE;
+    }
+    else if(key==T-&gt;data)
+    {
+        *p=T;
+        return TRUE;
+    }
+    else if (key&lt;T-&gt;data)
+        return SearchBST(T-&gt;LChild, key, T, p);
+    else 
+        return SearchBST(T-&gt;RChild, key, T, p);
+}
+
+Status Delete(BiTree *p)
+{
+    BiTree q, s;
+    if((*p)-&gt;RChild==NULL)
+    {
+        q=*p;
+        *p=(*p)-&gt;LChild;
+        free(q);
+    }
+    else if((*p)-&gt;LChild==NULL)
+    {
+        q=*p;
+        *p=(*p)-&gt;RChild;
+        free(q);
+    }
+    else
+    {
+        q=*p;
+        s=(*p)-&gt;LChild;
+        while(s-&gt;RChild)
+        {
+            q=s;
+            s=s-&gt;RChild;
+        }
+        (*p)-&gt;data=s-&gt;data;
+        if(q!=*p)
+            q-&gt;RChild=s-&gt;LChild;   
+        //如果q不等于p，上面while起码遍历一次，删掉s，q的右孩子没了，把s原先左孩子接到q右侧。
+        else
+            q-&gt;LChild=s-&gt;LChild;   
+        //如果q等于p，while没遍历，删掉s，q的左孩子没了，把s原先左孩子接到q左侧。
+        free(s);
+    }
+    return TRUE;
+}
+
+Status InsertBST(BiTree *T, int key)
+{
+    BiTree p, s;
+    if(!SearchBST(*T, key, NULL, &amp;p))
+    {
+        s=(BiTree)malloc(sizeof(BITNode));
+        s-&gt;data=key;
+        s-&gt;LChild=s-&gt;RChild=NULL;
+        if(!p)
+            *T=s;
+        else if(key&lt;p-&gt;data)
+            p-&gt;LChild=s;
+        else    
+            p-&gt;RChild=s;
+        return TRUE;
+    }
+    else
+        return FALSE;
+}
+
+Status DeleteBST(BiTree *T, int key)
+{
+    if(!*T)
+        return FALSE;
+    else
+    {
+        if(key==(*T)-&gt;data)
+            return Delete(T);
+        else if(key&lt;(*T)-&gt;data)
+            return DeleteBST(&amp;(*T)-&gt;LChild, key);
+        else
+            return DeleteBST(&amp;(*T)-&gt;RChild, key);  
+    }
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div><hr><div class="reprint" id="reprint-statement"><div class="reprint__author"><span class="reprint-meta" style="font-weight:700"><i class="fas fa-user">文章作者:</i></span> <span class="reprint-info"><a href="/about" rel="external nofollow noreferrer">Jie Gu</a></span></div><div class="reprint__type"><span class="reprint-meta" style="font-weight:700"><i class="fas fa-link">文章链接:</i></span> <span class="reprint-info"><a href="http://churoc.top/2021/12/18/shu-ju-jie-gou-xue-xi-bi-ji/">http://churoc.top/2021/12/18/shu-ju-jie-gou-xue-xi-bi-ji/</a></span></div><div class="reprint__notice"><span class="reprint-meta" style="font-weight:700"><i class="fas fa-copyright">版权声明:</i></span> <span class="reprint-info">本博客所有文章除特別声明外，均采用 <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a> 许可协议。转载请注明来源 <a href="/about" target="_blank">Jie Gu</a> !</span></div></div><script async defer>document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }</script><div class="tag_share" style="display:block"><div class="post-meta__tag-list" style="display:inline-block"><div class="article-tag"><a href="/tags/%E7%AE%97%E6%B3%95/"><span class="chip bg-color">算法</span></a> <a href="/tags/C%E8%AF%AD%E8%A8%80/"><span class="chip bg-color">C语言</span></a></div></div><div class="post_share" style="zoom:80%;width:fit-content;display:inline-block;float:right;margin:-.15rem 0"><link rel="stylesheet" href="/libs/share/css/share.min.css"><div id="article-share"><div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div><script src="/libs/share/js/social-share.min.js"></script></div></div></div><style>#reward{margin:40px 0;text-align:center}#reward .reward-link{font-size:1.4rem;line-height:38px}#reward .btn-floating:hover{box-shadow:0 6px 12px rgba(0,0,0,.2),0 5px 15px rgba(0,0,0,.2)}#rewardModal{width:320px;height:350px}#rewardModal .reward-title{margin:15px auto;padding-bottom:5px}#rewardModal .modal-content{padding:10px}#rewardModal .close{position:absolute;right:15px;top:15px;color:rgba(0,0,0,.5);font-size:1.3rem;line-height:20px;cursor:pointer}#rewardModal .close:hover{color:#ef5350;transform:scale(1.3);-moz-transform:scale(1.3);-webkit-transform:scale(1.3);-o-transform:scale(1.3)}#rewardModal .reward-tabs{margin:0 auto;width:210px}.reward-tabs .tabs{height:38px;margin:10px auto;padding-left:0}.reward-content ul{padding-left:0!important}.reward-tabs .tabs .tab{height:38px;line-height:38px}.reward-tabs .tab a{color:#fff;background-color:#ccc}.reward-tabs .tab a:hover{background-color:#ccc;color:#fff}.reward-tabs .wechat-tab .active{color:#fff!important;background-color:#22ab38!important}.reward-tabs .alipay-tab .active{color:#fff!important;background-color:#019fe8!important}.reward-tabs .reward-img{width:210px;height:210px}</style><div id="reward"><a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a><div id="rewardModal" class="modal"><div class="modal-content"><a class="close modal-close"><i class="fas fa-times"></i></a><h4 class="reward-title">你的赏识是我前进的动力</h4><div class="reward-content"><div class="reward-tabs"><ul class="tabs row"><li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li><li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li></ul><div id="alipay"><img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码"></div><div id="wechat"><img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码"></div></div></div></div></div></div><script>$(function(){$(".tabs").tabs()})</script></div></div><style>.valine-card{margin:1.5rem auto}.valine-card .card-content{padding:20px 20px 5px 20px}#vcomments textarea{box-sizing:border-box;background:url(/medias/comment_bg.png) 100% 100% no-repeat}#vcomments p{margin:2px 2px 10px;font-size:1.05rem;line-height:1.78rem}#vcomments blockquote p{text-indent:.2rem}#vcomments a{padding:0 2px;color:#4cbf30;font-weight:500;text-decoration:none}#vcomments img{max-width:100%;height:auto;cursor:pointer}#vcomments ol li{list-style-type:decimal}#vcomments ol,ul{display:block;padding-left:2em;word-spacing:.05rem}#vcomments ul li,ol li{display:list-item;line-height:1.8rem;font-size:1rem}#vcomments ul li{list-style-type:disc}#vcomments ul ul li{list-style-type:circle}#vcomments table,td,th{padding:12px 13px;border:1px solid #dfe2e5}#vcomments table,td,th{border:0}table tr:nth-child(2n),thead{background-color:#fafafa}#vcomments table th{background-color:#f2f2f2;min-width:80px}#vcomments table td{min-width:80px}#vcomments h1{font-size:1.85rem;font-weight:700;line-height:2.2rem}#vcomments h2{font-size:1.65rem;font-weight:700;line-height:1.9rem}#vcomments h3{font-size:1.45rem;font-weight:700;line-height:1.7rem}#vcomments h4{font-size:1.25rem;font-weight:700;line-height:1.5rem}#vcomments h5{font-size:1.1rem;font-weight:700;line-height:1.4rem}#vcomments h6{font-size:1rem;line-height:1.3rem}#vcomments p{font-size:1rem;line-height:1.5rem}#vcomments hr{margin:12px 0;border:0;border-top:1px solid #ccc}#vcomments blockquote{margin:15px 0;border-left:5px solid #42b983;padding:1rem .8rem .3rem .8rem;color:#666;background-color:rgba(66,185,131,.1)}#vcomments pre{font-family:monospace,monospace;padding:1.2em;margin:.5em 0;background:#272822;overflow:auto;border-radius:.3em;tab-size:4}#vcomments code{font-family:monospace,monospace;padding:1px 3px;font-size:.92rem;color:#e96900;background-color:#f8f8f8;border-radius:2px}#vcomments pre code{font-family:monospace,monospace;padding:0;color:#e8eaf6;background-color:#272822}#vcomments pre[class*=language-]{padding:1.2em;margin:.5em 0}#vcomments code[class*=language-],pre[class*=language-]{color:#e8eaf6}#vcomments [type=checkbox]:not(:checked),[type=checkbox]:checked{position:inherit;margin-left:-1.3rem;margin-right:.4rem;margin-top:-1px;vertical-align:middle;left:unset;visibility:visible}#vcomments b,strong{font-weight:700}#vcomments dfn{font-style:italic}#vcomments small{font-size:85%}#vcomments cite{font-style:normal}#vcomments mark{background-color:#fcf8e3;padding:.2em}#vcomments table,td,th{padding:12px 13px;border:1px solid #dfe2e5}table tr:nth-child(2n),thead{background-color:#fafafa}#vcomments table th{background-color:#f2f2f2;min-width:80px}#vcomments table td{min-width:80px}#vcomments [type=checkbox]:not(:checked),[type=checkbox]:checked{position:inherit;margin-left:-1.3rem;margin-right:.4rem;margin-top:-1px;vertical-align:middle;left:unset;visibility:visible}</style><div class="card valine-card" data-aos="fade-up"><div class="comment_headling" style="font-size:20px;font-weight:700;position:relative;padding-left:20px;top:15px;padding-bottom:5px"><i class="fas fa-comments fa-fw" aria-hidden="true"></i> <span>评论</span></div><div id="vcomments" class="card-content" style="display:grid"></div></div><script src="/libs/valine/av-min.js"></script><script src="/libs/valine/Valine.min.js"></script><script>let metaPlaceholder = {"nick":"昵称/QQ号(必填)","mail":"邮箱(必填)","link":"网址(https://)"} ;
+    //这里要换行
+    new Valine({
+            el: '#vcomments',
+            appId: 'DUITEHPQM2apGvn2evPjKjPm-MdYXbMMI',
+            appKey: 'UtRfXh32rY6A3QT3uqQ6c85h',
+            notify: 'true' === 'true',
+            verify: 'true' === 'true',
+            visitor: 'true' === 'true',
+            avatar: 'monsterid',
+            pageSize: '10',
+            lang: 'zh-CN',
+            placeholder: '留下你的足迹..',
+            meta: ["nick", "mail", "link"],
+            recordIP: 'true' === 'true',
+            enableQQ: 'monsterid',
+            requiredFields: ["xxxxxxxxxxxxxxx"],
+            master: ["xxxxxxxxxxxxxxx"],
+            friends: ["xxxxxxxxxxxxxx", ""],
+            tagMeta: ["博主", "小伙伴", "访客"],
+            metaPlaceholder: metaPlaceholder,
+
+        });</script><article id="prenext-posts" class="prev-next articles"><div class="row article-row"><div class="article col s12 m6" data-aos="fade-up"><div class="article-badge left-badge text-color"><i class="fas fa-chevron-left"></i> &nbsp;上一篇</div><div class="card"><a href="/2021/12/18/ji-qi-xue-xi-xue-xi-bi-ji/"><div class="card-image"><img src="/images/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%90%B4%E6%81%A9%E8%BE%BE.jpg" class="responsive-img" alt="机器学习学习笔记"> <span class="card-title">机器学习学习笔记</span></div></a><div class="card-content article-content"><div class="summary block-with-text">机器学习吴恩达视频笔记</div><div class="publish-info"><span class="publish-date"><i class="far fa-clock fa-fw icon-date"></i> 2021-12-18</span><span class="publish-author"><i class="fas fa-bookmark fa-fw icon-category"></i> <a href="/categories/%E7%AC%94%E8%AE%B0/" class="post-category">笔记</a></span></div></div><div class="card-action article-tags"><a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"><span class="chip bg-color">机器学习</span></a> <a href="/tags/%E7%AC%94%E8%AE%B0/"><span class="chip bg-color">笔记</span></a></div></div></div><div class="article col s12 m6" data-aos="fade-up"><div class="article-badge right-badge text-color">下一篇&nbsp;<i class="fas fa-chevron-right"></i></div><div class="card"><a href="/2021/12/17/guo-ke/"><div class="card-image"><img src="/images/%E8%BF%87%E5%AE%A2.jpg" class="responsive-img" alt="过客"> <span class="card-title">过客</span></div></a><div class="card-content article-content"><div class="summary block-with-text">总有一些人,原本只是生命的过客,后来却成了记忆的常客。</div><div class="publish-info"><span class="publish-date"><i class="far fa-clock fa-fw icon-date"></i> 2021-12-17</span><span class="publish-author"><i class="fas fa-bookmark fa-fw icon-category"></i> <a href="/categories/%E9%9A%8F%E7%AC%94/" class="post-category">随笔</a></span></div></div><div class="card-action article-tags"><a href="/tags/%E9%9A%8F%E7%AC%94/"><span class="chip bg-color">随笔</span></a></div></div></div></div></article></div><script src="/libs/codeBlock/codeBlockFuction.js"></script><script src="/libs/codeBlock/codeLang.js"></script><script src="/libs/codeBlock/codeCopy.js"></script><script src="/libs/codeBlock/codeShrink.js"></script></div><div id="toc-aside" class="expanded col l3 hide-on-med-and-down"><div class="toc-widget card"><div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div><div id="toc-content"></div></div></div></div><div id="floating-toc-btn" class="hide-on-med-and-down"><a class="btn-floating btn-large bg-color"><i class="fas fa-list-ul"></i></a></div><script src="/libs/tocbot/tocbot.min.js"></script><script>$(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('3'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });</script></main><footer class="page-footer bg-color"><div class="container row center-align" style="margin-bottom:15px!important"><div class="col s12 m8 l8 copy-right">Copyright&nbsp;&copy; <span id="year">2021-2022</span> <a href="/about" target="_blank">Jie Gu</a> |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a> |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a><br>&nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span class="white-color">9.5k</span> <span id="busuanzi_container_site_pv">&nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv" class="white-color"></span></span> <span id="busuanzi_container_site_uv">&nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv" class="white-color"></span></span><br><span id="sitetime">Loading ...</span><script>var calcSiteTime=function(){var e=new Date,t="2021",n=e.getFullYear(),i=e.getMonth()+1,a=e.getDate(),r=e.getHours(),s=e.getMinutes(),o=e.getSeconds(),g=Date.UTC(t,"12","15","0","0","0"),d=Date.UTC(n,i,a,r,s,o)-g,m=Math.floor(d/31536e6),l=Math.floor(d/864e5-365*m);if(t===String(n)){document.getElementById("year").innerHTML=n;var c="This site has been running for "+l+" days";c="本站已运行 "+l+" 天",document.getElementById("sitetime").innerHTML=c}else{document.getElementById("year").innerHTML=t+" - "+n;var u="This site has been running for "+m+" years and "+l+" days";u="本站已运行 "+m+" 年 "+l+" 天",document.getElementById("sitetime").innerHTML=u}};calcSiteTime()</script><br></div><div class="col s12 m4 l4 social-link social-statis"><a href="https://github.com/churoc" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50"><i class="fab fa-github"></i></a><a href="https://blog.csdn.net/qq_46217688?spm=1000.2115.3001.5343" class="tooltipped" target="_blank" data-tooltip="访问我的CSDN" data-position="top" data-delay="50"><i class="fab fa-codiepie"></i></a><a href="echuroc" class="tooltipped" target="_blank" data-tooltip="微信联系我: echuroc" data-position="top" data-delay="50"><i class="fab fa-weixin"></i></a><a href="13962893542" class="tooltipped" target="_blank" data-tooltip="手机联系我: 13962893542" data-position="top" data-delay="50"><i class="fas fa-phone"></i></a><a href="mailto:jieguchuroc@163.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50"><i class="fas fa-envelope-open"></i></a><a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1308093654" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1308093654" data-position="top" data-delay="50"><i class="fab fa-qq"></i></a> <a href="https://www.zhihu.com/people/churoc" class="tooltipped" target="_blank" data-tooltip="访问我的知乎" data-position="top" data-delay="50"><i class="fab fa-zhihu1">知</i></a></div></div></footer><div class="progress-bar"></div><div id="searchModal" class="modal"><div class="modal-content"><div class="search-header"><span class="title"><i class="fas fa-search"></i> &nbsp;&nbsp;搜索</span> <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字" class="search-input"></div><div id="searchResult"></div></div></div><script>$(function(){!function(t,a,s){"use strict";$.ajax({url:t,dataType:"xml",success:function(t){var e=$("entry",t).map(function(){return{title:$("title",this).text(),content:$("content",this).text(),url:$("url",this).text()}}).get(),r=document.getElementById(a),n=document.getElementById(s);r.addEventListener("input",function(){var f='<ul class="search-result-list">',m=this.value.trim().toLowerCase().split(/[\s\-]+/);n.innerHTML="",this.value.trim().length<=0||(e.forEach(function(t){var r=!0,n=t.title.trim().toLowerCase(),a=t.content.trim().replace(/<[^>]+>/g,"").toLowerCase(),e=t.url;e=0===e.indexOf("/")?t.url:"/"+e;var s=-1,i=-1,l=-1;if(""!==n&&""!==a&&m.forEach(function(t,e){s=n.indexOf(t),i=a.indexOf(t),s<0&&i<0?r=!1:(i<0&&(i=0),0===e&&(l=i))}),r){f+="<li><a href='"+e+"' class='search-result-title'>"+n+"</a>";var c=t.content.trim().replace(/<[^>]+>/g,"");if(0<=l){var u=l-20,o=l+80;u<0&&(u=0),0===u&&(o=100),o>c.length&&(o=c.length);var h=c.substr(u,o);m.forEach(function(t){var e=new RegExp(t,"gi");h=h.replace(e,'<em class="search-keyword">'+t+"</em>")}),f+='<p class="search-result">'+h+"...</p>"}f+="</li>"}}),f+="</ul>",n.innerHTML=f)})}})}("/search.xml","searchInput","searchResult")})</script><div id="backTop" class="top-scroll"><a class="btn-floating btn-large waves-effect waves-light" href="#!"><i class="fas fa-arrow-up"></i></a></div><script src="/libs/materialize/materialize.min.js"></script><script src="/libs/masonry/masonry.pkgd.min.js"></script><script src="/libs/aos/aos.js"></script><script src="/libs/scrollprogress/scrollProgress.min.js"></script><script src="/libs/lightGallery/js/lightgallery-all.min.js"></script><script src="/js/matery.js"></script><script src="https://ssl.captcha.qq.com/TCaptcha.js"></script><script src="/libs/others/TencentCaptcha.js"></script><button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button><script>!function(){var t=document.createElement("script"),e=window.location.protocol.split(":")[0];t.src="https"===e?"https://zz.bdstatic.com/linksubmit/push.js":"http://push.zhanzhang.baidu.com/push.js";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(t,s)}()</script><script async src="/libs/others/busuanzi.pure.mini.js"></script><script src="/libs/instantpage/instantpage.js" type="module"></script></body></html>
